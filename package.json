@@ -1,0 +1,26 @@
+{
+  "name": "summer1400-fe-team5",
+  "version": "1.0.0",
+  "description": "پروژه کارآموزی تابستان 1400 کد استار- با استفاده از برترین تکنولوژی های روز دنیا 😑",
+  "main": "index.js",
+  "scripts": {
+    "scss:watch": "sass --watch src/style/scss:src/style/css",
+    "scss": "sass --watch src/style/scss:src/style/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Star-Academy/Summer1400-FE-Team5.git"
+  },
+  "keywords": [
+    "codeStar"
+  ],
+  "author": "ali salemmi - erfan ghorbani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Star-Academy/Summer1400-FE-Team5/issues"
+  },
+  "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team5#readme",
+  "devDependencies": {
+    "sass": "^1.36.0"
+  }
+}
