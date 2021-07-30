@@ -1,0 +1,53 @@
+@import 'var';
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'iransans';
+    src: url('../../assets/font/iransans.ttf');
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'iransans', sans-serif;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__section_balloon{
+        width: 100%;
+        text-align: center;
+        background-image: url('../../assets/image/background2.jpg');
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center -100px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        transition: all 2s;
+        &:hover{
+            filter: contrast(80%) saturate(500%);
+        }
+    }
+    &__slogan{
+        margin-bottom: auto;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.616);   
+    }
+    &__slogan:not(h3){
+        padding-top: 10px;
+        font-size: 4rem;
+        font-weight: bolder;
+    }
+    &__slogan:not(h1){
+        font-size: 2rem;
+    }
+}
