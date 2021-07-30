@@ -1,0 +1,48 @@
+@import 'var';
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'iransans';
+    src: url('../../assets/font/iransans.ttf');
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'iransans', sans-serif;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between  ;
+    align-items: center;
+    background-color: $color_light_blue;
+    padding: 50px;
+    &__section_link{
+        display: flex;
+        flex-direction: column;
+  
+    }
+    &__section_socail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__link{
+        width: auto;
+        text-decoration: underline 0.15em rgba(0,0,0,0);
+        color:black;
+        margin: 0.6rem auto 0.6rem auto;
+        font-size: 1.5rem;
+        transition: 0.3s all ease;
+        text-underline-position: under; 
+    }
+    &__link:hover{
+        text-decoration-color:rgb(35, 149, 255);
+    }
+}
