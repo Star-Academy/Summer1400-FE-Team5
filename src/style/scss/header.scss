@@ -1,0 +1,113 @@
+@import 'var';
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'iransans';
+    src: url('../../assets/font/iransans.ttf');
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'iransans', sans-serif;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: $color_light_blue;
+
+    &__link__box {
+        display: flex;
+        flex-grow: 2;
+        flex-wrap: wrap;
+        min-height: 100%;
+        height: 100%;
+        align-items: center;
+        
+    }
+    &__link{
+
+        width: auto;
+        text-decoration: underline 0.15em rgba(0,0,0,0);
+        color:black;
+        margin: 0 auto 0 auto;
+        font-size: 1.5rem;
+        transition: 0.3s all ease;
+        text-underline-position: under; 
+    }
+    &__link:hover{
+        text-decoration-color:rgb(35, 149, 255);
+    }
+    &__collapse_btn{
+        display: none;
+    }
+    &__link__start_now{
+        
+        background-color: $color_medium_blue;
+        padding: 0.7rem 2rem 0.7rem 2rem;
+        border-radius: 1.5rem;
+        width: auto;
+        text-decoration: none;
+        color:black;
+        margin: 0 auto 0 auto;
+        font-size: 1.5rem;
+        transition: 0.5s all ease;
+    }
+    &__link__start_now:hover{
+        background-color: $color_medium_yellow;
+    }
+
+    &__logo__link {
+        width: auto;      
+        flex-grow: 3;  
+        text-align: left;
+        max-height: auto;
+        min-height: 100%;
+        height: 100%;
+        margin-left: 3rem;
+    }
+    &__logo {
+        width: auto;
+        min-height: 100%;
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width:$media_medium) {
+    .header{
+        &__link__box {
+            display: flex;
+            flex-grow: 0.5;
+            min-height: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            text-align: right;
+        }
+        &__collapse_btn {
+            display: inline-block;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: transparent;
+            border: none;
+            margin-right: auto;
+            cursor: pointer;
+        }
+        &__link,&__link__start_now{
+            display: none;
+        }
+        &__logo__link{
+            margin-left: 0;
+        }
+    }
+    
+}
