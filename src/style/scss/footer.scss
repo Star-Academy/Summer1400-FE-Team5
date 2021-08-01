@@ -46,3 +46,31 @@ html {
         text-decoration-color:rgb(35, 149, 255);
     }
 }
+
+@media only screen and (max-width:549px) {
+    .footer{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between  ;
+        align-items: center;
+        background-color: $color_light_blue;
+        padding: 50px;
+        &__section_link{
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+      
+        }
+        &__section_socail{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+    }
+
+    
+}
