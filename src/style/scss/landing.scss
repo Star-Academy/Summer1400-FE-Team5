@@ -22,12 +22,11 @@ html {
     flex-direction: column;
     justify-content: center;
     &__section_balloon{
-        width: 100%;
+        display: flex;
+        flex-direction: column;
         text-align: center;
         background-image: url('../../assets/image/background2.jpg');
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
         background-size: cover;
         background-position: center -100px;
         background-attachment: fixed;
@@ -38,16 +37,18 @@ html {
         }
     }
     &__slogan{
-        margin-bottom: auto;
         text-align: center;
         color: rgba(0, 0, 0, 0.616);   
     }
-    &__slogan:not(h3){
-        padding-top: 10px;
+    h1#{&}__slogan{
+        margin-top: auto;
+        
+        padding-top: 15px;
         font-size: 4rem;
         font-weight: bolder;
     }
-    &__slogan:not(h1){
+    h3#{&}__slogan{
+        margin-bottom: 20vh;
         font-size: 2rem;
     }
 }
