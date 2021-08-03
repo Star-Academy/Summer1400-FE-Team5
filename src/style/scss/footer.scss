@@ -1,76 +1,71 @@
 @import 'var';
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-@font-face {
-    font-family: 'iransans';
-    src: url('../../assets/font/iransans.ttf');
-}
+.footer {
+  display: flex;
+  padding: 5rem;
+  align-items: center;
+  justify-content: space-between;
 
-html {
-    font-size: 62.5%;
-    font-family: 'iransans', sans-serif;
-}
+  background-color: $color-text;
 
-.footer{
+  &__link {
     display: flex;
-    justify-content: space-between  ;
+    flex-direction: column;
     align-items: center;
-    background-color: $color_light_blue;
-    padding: 50px;
-    &__section_link{
-        display: flex;
-        flex-direction: column;
-  
+
+    a {
+      margin-bottom: 1rem;
+      color: #fff;
+      text-align: center;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: $color-primary;
+      }
     }
-    &__section_socail{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-left: 1rem;
+      text-decoration: none;
+
+      &:hover svg {
+        fill: $color-primary;
+      }
+
+      svg {
+        transition: all 0.3s ease;
+      }
     }
-    &__link{
-        width: auto;
-        text-decoration: underline 0.15em rgba(0,0,0,0);
-        color:black;
-        margin: 0.6rem auto 0.6rem auto;
-        font-size: 1.5rem;
-        transition: 0.3s all ease;
-        text-underline-position: under; 
-    }
-    &__link:hover{
-        text-decoration-color:rgb(35, 149, 255);
-    }
+  }
 }
 
-@media only screen and (max-width:549px) {
-    .footer{
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: space-between  ;
-        align-items: center;
-        background-color: $color_light_blue;
-        padding: 50px;
-        &__section_link{
-            display: flex;
-            flex-direction: column;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-      
-        }
-        &__section_socail{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-        
+@media only screen and (max-width: 549px) {
+  .footer {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+
+    &__section_link {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
-    
+    &__section_socail {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
 }

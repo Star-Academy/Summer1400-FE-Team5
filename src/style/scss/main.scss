@@ -1,3 +1,5 @@
+@import 'var';
+
 *,
 *::before,
 *::after {
@@ -20,6 +22,10 @@ body {
 html {
   font-size: 62.5%;
   font-family: 'iransans', sans-serif;
+}
+
+body {
+  color: $color-text;
 }
 
 main {
