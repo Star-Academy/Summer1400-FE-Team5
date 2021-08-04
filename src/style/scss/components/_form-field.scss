@@ -1,4 +1,4 @@
-@import './var';
+@import '../util/var';
 
 $padding-tb: 0.7rem;
 $padding-lr: 0.3rem;
@@ -22,7 +22,7 @@ $font-size-small: 1.2rem;
   margin-top: 2 * $padding-tb;
 
   &__label {
-    color: $color-text-gray;
+    color: $color-text;
     font-family: inherit;
     font-size: $font-size;
     cursor: text;
@@ -43,7 +43,7 @@ $font-size-small: 1.2rem;
 
     outline: none;
     border: none;
-    border-bottom: 1px solid $color-text-gray;
+    border-bottom: 1px solid $color-text;
 
     font-family: inherit;
     font-size: $font-size;

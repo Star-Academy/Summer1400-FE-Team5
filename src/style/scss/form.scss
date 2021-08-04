@@ -1,4 +1,13 @@
-@import 'form-field';
+@import 'components/form-field';
+
+body {
+  background: url('../../assets/image/background.jpg');
+  background-size: cover;
+}
+
+main {
+  min-height: 100%;
+}
 
 .form {
   display: flex;
