@@ -15,9 +15,10 @@
   &__background {
     display: block;
 
-    background: url('../../../assets/image/header.jpg');
-    background-position: top right;
-    background-size: contain;
+    background: url('../../../assets/image/header.png'),
+      url('../../../assets/image/blob.svg');
+    background-position: center right, top right;
+    background-size: contain, 100% 80%;
     background-repeat: no-repeat;
   }
 
