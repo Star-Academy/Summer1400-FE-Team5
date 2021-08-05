@@ -1,1 +1,280 @@
 @import 'util/var';
+@import 'util/mixins';
+
+body {
+  background-color: $background-color;
+  text-align: center;
+}
+
+.song {
+
+  &__container {
+
+    display: inline-block;
+    margin-top: 10rem !important;
+    padding-bottom: 3rem;
+
+    @include round-section;
+    overflow: visible !important;
+
+    @media only screen and (max-width: 900px) {
+      width: 90%;
+    }
+
+    @media only screen and (max-width: 800px) {
+      width: 100%;
+    }
+
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    transform: translateY(-7.5rem);
+
+    &>img {
+      border-radius: 50%;
+      margin-right: 10rem;
+      box-shadow: 1px 5px 12px rgba(0, 0, 0, 0.322);
+
+      @media only screen and (max-width: 494px) {
+        width: 60%;
+        margin: auto;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 6rem auto auto;
+
+    @media only screen and (max-width: 494px) {
+      width: 100%;
+      margin: auto;
+    }
+
+
+    &>div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &>h1 {
+        font-size: 3rem;
+        margin: 0 1rem;
+      }
+
+      &>div {
+        padding: 0.1rem 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-tomato-red;
+      }
+    }
+
+    &>button {
+      width: auto;
+      height: 3.5rem;
+      background-color: $color-tomato-red;
+      border-radius: 1rem;
+      border: 0.15rem solid $color-tomato-red;
+      padding: 0.7rem 0.7rem;
+      margin: 1rem;
+      cursor: pointer;
+      transition: 0.5s all ease;
+      color: #fefefe;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 0.4;
+    align-items: center;
+    margin: 5rem auto auto 5rem;
+
+    @media only screen and (max-width: 684px) {
+      width: 100%;
+      margin: auto;
+    }
+
+    @media only screen and (max-width: 684px) {
+      width: 100%;
+      margin: auto;
+    }
+
+    &>button {
+      width: auto;
+      height: 3.5rem;
+      background-color: $color-tomato-red;
+      border-radius: 1rem;
+      border: 0.15rem solid $color-tomato-red;
+      padding: 0.7rem 0.7rem;
+      margin: 1rem;
+      cursor: pointer;
+      transition: 0.5s all ease;
+      display: flex;
+      justify-self: center;
+      align-items: center;
+      width: 5rem !important;
+
+      &>svg {
+        width: auto;
+        height: 95%;
+        fill: #fefefe !important;
+      }
+    }
+  }
+
+  &__add-to-playlist {
+    &::after {
+      content: "افزودن به علاقه مندی ها";
+      color: #fefefe00;
+      width: 0;
+      transition: 0.45s all ease;
+      white-space: nowrap;
+    }
+
+    &:hover::after {
+      content: "علاقه مندی ها";
+      color: #fefefe;
+      width: 20rem;
+      font-weight: bold;
+    }
+
+    &:hover {
+      width: 15rem !important;
+    }
+  }
+
+  &__play {
+    &::after {
+      content: "پخش";
+      color: #fefefe00;
+      width: 0;
+      transition: 0.45s all ease;
+    }
+
+    &:hover::after {
+      content: "پخش";
+      color: #fefefe;
+      width: 10rem;
+      font-weight: bold;
+    }
+
+    &:hover {
+      width: 10rem !important;
+    }
+  }
+
+  &__options {
+
+    &--suggestion,
+    &--lyrics {
+      background-color: transparent;
+      cursor: pointer;
+      color: black;
+      margin: 1rem;
+      font-size: 1.2rem;
+      transition: 0.2s all ease;
+    }
+  }
+
+  &__lyrics{
+    width: 90%;
+    margin: auto;
+    font-size: 1.3rem;
+  }
+
+  &__suggestion{
+    & > h1{
+      cursor:default;
+      margin: 1.5rem auto;
+    }
+    &__list{
+
+      & > li{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        list-style: none;
+        align-items: center;
+        margin: 1rem auto;
+        & > a{
+          width: 50%;
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          align-items: center;
+          text-decoration: none;
+          &>img{
+            width: 5rem;
+            height: auto;
+            border-radius: 0.5rem;
+          }
+          &>h3{
+            text-decoration: none;
+            color: $color-text;
+          }
+          &>div{
+            text-decoration: none;
+            color: $color-text;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+#lyrics {
+  display: none;
+
+  &~.song__lyrics {
+    display: none;
+  }
+
+  &:checked~.song__lyrics {
+    display: block;
+  }
+
+  &:checked~.song__options--lyrics {
+    padding: 0.1rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid $color-tomato-red;
+    font-weight: bold;
+  }
+}
+
+#suggestion {
+  display: none;
+
+  &~.song__suggestion {
+    display: none;
+  }
+
+  &:checked~.song__suggestion {
+    display: block;
+  }
+
+  &:checked~.song__options--suggestion {
+    padding: 0.1rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid $color-tomato-red;
+    font-weight: bold;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.411);
+  margin: 1rem 0;
+}
