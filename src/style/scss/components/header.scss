@@ -1,9 +1,12 @@
 @import '../util/var';
+@import '../util/mixins';
 
 .header {
   display: grid;
-  height: 100vh;
+  height: calc(100vh - #{2 * $round-section-margin});
   grid-template-columns: minmax(600px, 1fr) 1fr;
+
+  @include round-section();
 
   > .nav {
     position: absolute;
