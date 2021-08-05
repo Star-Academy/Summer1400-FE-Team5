@@ -1,11 +1,11 @@
-@import '../util/var';
+@use '../util/var';
 
 .nav {
   &__link {
     display: block;
     margin: 0 2rem;
 
-    color: $color-text;
+    color: var.$color-text;
     font-size: 1.5rem;
     text-decoration: none;
 
@@ -21,11 +21,11 @@
 
       transform: scaleX(0);
       transition: all 0.3s ease;
-      background-color: $color-primary;
+      background-color: var.$color-primary;
     }
 
     &:hover {
-      color: $color-primary;
+      color: var.$color-primary;
 
       &::after {
         transform: scaleX(1);

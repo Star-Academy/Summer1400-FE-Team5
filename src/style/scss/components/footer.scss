@@ -1,5 +1,5 @@
-@import '../util/var';
-@import '../util/mixins';
+@use '../util/var';
+@use '../util/mixins';
 
 .footer {
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
 
-  @include round-section($background-color: $color-text);
+  @include mixins.round-section($background-color: var.$color-text);
 
   &__link {
     display: flex;
@@ -23,7 +23,7 @@
       transition: all 0.2s ease;
 
       &:hover {
-        color: $color-primary;
+        color: var.$color-primary;
       }
     }
   }
@@ -38,7 +38,7 @@
       text-decoration: none;
 
       &:hover svg {
-        fill: $color-primary;
+        fill: var.$color-primary;
       }
 
       svg {

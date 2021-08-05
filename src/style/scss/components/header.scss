@@ -1,12 +1,12 @@
-@import '../util/var';
-@import '../util/mixins';
+@use '../util/var';
+@use '../util/mixins';
 
 .header {
   display: grid;
-  height: calc(100vh - #{2 * $round-section-margin});
+  min-height: calc(100vh - #{2 * var.$round-section-margin});
   grid-template-columns: minmax(600px, 1fr) 1fr;
 
-  @include round-section();
+  @include mixins.round-section();
 
   > .nav {
     position: absolute;
@@ -29,8 +29,7 @@
     align-items: center;
 
     h1 {
-      color: $color-text;
-      font-size: 7rem;
+      color: var.$color-text;
     }
 
     h2 {

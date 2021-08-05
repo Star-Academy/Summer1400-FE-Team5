@@ -1,34 +1,27 @@
-@import 'util/var';
-@import 'util/mixins';
-
-body {
-  background-color: $background-color;
-  text-align: center;
-}
+@use 'util/var';
+@use 'util/mixins';
 
 .song {
-
   &__container {
     margin-top: 10rem !important;
     padding-bottom: 3rem;
 
-    @include round-section;
     overflow: visible !important;
 
-
+    @include mixins.round-section();
   }
 
   &__intro {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap;
 
     transform: translateY(-7.5rem);
 
-    &>img {
-      border-radius: 50%;
+    & > img {
       margin-right: 10rem;
+
+      border-radius: 50%;
       box-shadow: 1px 5px 12px rgba(0, 0, 0, 0.322);
 
       @media only screen and (max-width: 494px) {
@@ -50,31 +43,30 @@ body {
       margin: auto;
     }
 
-
-    &>div {
+    & > div {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
 
-      &>h1 {
+      & > h1 {
         font-size: 3rem;
         margin: 0 1rem;
       }
 
-      &>div {
+      & > div {
         padding: 0.1rem 1rem;
         border-radius: 1rem;
-        border: 1px solid $color-tomato-red;
+        border: 1px solid var.$color-tomato-red;
       }
     }
 
-    &>button {
+    & > button {
       width: auto;
       height: 3.5rem;
-      background-color: $color-tomato-red;
+      background-color: var.$color-tomato-red;
       border-radius: 1rem;
-      border: 0.15rem solid $color-tomato-red;
+      border: 0.15rem solid var.$color-tomato-red;
       padding: 0.7rem 0.7rem;
       margin: 1rem;
       cursor: pointer;
@@ -101,12 +93,12 @@ body {
       margin: auto;
     }
 
-    &>button {
+    & > button {
       width: auto;
       height: 3.5rem;
-      background-color: $color-tomato-red;
+      background-color: var.$color-tomato-red;
       border-radius: 1rem;
-      border: 0.15rem solid $color-tomato-red;
+      border: 0.15rem solid var.$color-tomato-red;
       padding: 0.7rem 0.7rem;
       margin: 1rem;
       cursor: pointer;
@@ -116,7 +108,7 @@ body {
       align-items: center;
       width: 5rem !important;
 
-      &>svg {
+      & > svg {
         width: auto;
         height: 95%;
         fill: #fefefe !important;
@@ -126,7 +118,7 @@ body {
 
   &__add-to-playlist {
     &::after {
-      content: "افزودن به علاقه مندی ها";
+      content: 'افزودن به علاقه مندی ها';
       color: #fefefe00;
       width: 0;
       transition: 0.45s all ease;
@@ -134,7 +126,7 @@ body {
     }
 
     &:hover::after {
-      content: "علاقه مندی ها";
+      content: 'علاقه مندی ها';
       color: #fefefe;
       width: 20rem;
       font-weight: bold;
@@ -147,14 +139,14 @@ body {
 
   &__play {
     &::after {
-      content: "پخش";
+      content: 'پخش';
       color: #fefefe00;
       width: 0;
       transition: 0.45s all ease;
     }
 
     &:hover::after {
-      content: "پخش";
+      content: 'پخش';
       color: #fefefe;
       width: 10rem;
       font-weight: bold;
@@ -166,7 +158,6 @@ body {
   }
 
   &__options {
-
     &--suggestion,
     &--lyrics {
       background-color: transparent;
@@ -178,68 +169,66 @@ body {
     }
   }
 
-  &__lyrics{
+  &__lyrics {
     width: 90%;
     margin: auto;
     font-size: 1.3rem;
   }
 
-  &__suggestion{
-    & > h1{
-      cursor:default;
+  &__suggestion {
+    & > h1 {
+      cursor: default;
       margin: 1.5rem auto;
     }
-    &__list{
-
-      & > li{
+    &__list {
+      & > li {
         display: flex;
         flex-direction: column;
         justify-content: center;
         list-style: none;
         align-items: center;
         margin: 1rem auto;
-        & > a{
+        & > a {
           width: 50%;
           display: flex;
           flex-direction: row-reverse;
           justify-content: space-between;
           align-items: center;
           text-decoration: none;
-          &>img{
+          & > img {
             width: 5rem;
             height: auto;
             border-radius: 0.5rem;
           }
-          &>h3{
+          & > h3 {
             text-decoration: none;
-            color: $color-text;
+            color: var.$color-text;
           }
-          &>div{
+          & > div {
             text-decoration: none;
-            color: $color-text;
+            color: var.$color-text;
           }
         }
       }
     }
   }
-
 }
 
 #lyrics {
   display: none;
 
-  &~.song__lyrics {
+  & ~ .song__lyrics {
     display: none;
   }
 
-  &:checked~.song__lyrics {
+  &:checked ~ .song__lyrics {
     display: block;
   }
 
-  &:checked~.song__options--lyrics {
+  &:checked ~ .song__options--lyrics {
     padding: 0.1rem 1rem;
     border-radius: 1rem;
-    border: 1px solid $color-tomato-red;
+    border: 1px solid var.$color-tomato-red;
     font-weight: bold;
   }
 }
@@ -247,18 +236,18 @@ body {
 #suggestion {
   display: none;
 
-  &~.song__suggestion {
+  & ~ .song__suggestion {
     display: none;
   }
 
-  &:checked~.song__suggestion {
+  &:checked ~ .song__suggestion {
     display: block;
   }
 
-  &:checked~.song__options--suggestion {
+  &:checked ~ .song__options--suggestion {
     padding: 0.1rem 1rem;
     border-radius: 1rem;
-    border: 1px solid $color-tomato-red;
+    border: 1px solid var.$color-tomato-red;
     font-weight: bold;
   }
 }

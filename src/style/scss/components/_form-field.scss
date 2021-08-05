@@ -1,4 +1,4 @@
-@import '../util/var';
+@use '../util/var';
 
 $padding-tb: 0.7rem;
 $padding-lr: 0.3rem;
@@ -7,8 +7,8 @@ $font-size-small: 1.2rem;
 
 %active {
   &__input {
-    border-bottom-color: $color-green;
-    box-shadow: 0 1px 0 0 $color-green;
+    border-bottom-color: var.$color-green;
+    box-shadow: 0 1px 0 0 var.$color-green;
   }
 
   &__label {
@@ -22,7 +22,7 @@ $font-size-small: 1.2rem;
   margin-top: 2 * $padding-tb;
 
   &__label {
-    color: $color-text;
+    color: var.$color-text;
     font-family: inherit;
     font-size: $font-size;
     cursor: text;
@@ -43,7 +43,7 @@ $font-size-small: 1.2rem;
 
     outline: none;
     border: none;
-    border-bottom: 1px solid $color-text;
+    border-bottom: 1px solid var.$color-text;
 
     font-family: inherit;
     font-size: $font-size;
@@ -87,7 +87,7 @@ $font-size-small: 1.2rem;
   &__input:required + &__label::after {
     content: '*';
     margin-right: 0.5rem;
-    color: $color-red;
+    color: var.$color-red;
   }
 
   &__status {
@@ -97,7 +97,7 @@ $font-size-small: 1.2rem;
     height: $font-size-small;
     box-sizing: content-box;
 
-    color: $color-red;
+    color: var.$color-red;
     font-size: $font-size-small;
     font-weight: 700;
     visibility: hidden;
@@ -116,8 +116,8 @@ $font-size-small: 1.2rem;
   &--wrong {
     .form__field {
       &__input {
-        border-bottom-color: $color-red;
-        box-shadow: 0 1px 0 0 $color-red;
+        border-bottom-color: var.$color-red;
+        box-shadow: 0 1px 0 0 var.$color-red;
       }
 
       &__status {

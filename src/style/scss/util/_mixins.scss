@@ -1,7 +1,8 @@
-@import 'var';
+@use 'sass:math';
+@use 'var';
 
 @mixin round-section($background-color: #fff) {
-  margin: $round-section-margin;
+  margin: var.$round-section-margin;
 
   border-radius: 3rem;
   background-color: $background-color;
