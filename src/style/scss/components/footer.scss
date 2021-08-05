@@ -1,24 +1,33 @@
 @use '../util/var';
 @use '../util/mixins';
+@use '../util/media';
 
 .footer {
   display: flex;
-  padding: 5rem;
+  padding: 4rem 2rem;
   align-items: center;
   justify-content: space-between;
 
   @include mixins.round-section($background-color: var.$color-text);
+
+  @include media.query(phone) {
+    flex-direction: column-reverse;
+  }
 
   &__link {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @include media.query(phone) {
+      margin: 4rem 0;
+    }
+
     a {
       margin-bottom: 1rem;
 
       color: #fff;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       text-align: center;
       transition: all 0.2s ease;
 
@@ -44,31 +53,6 @@
       svg {
         transition: all 0.3s ease;
       }
-    }
-  }
-}
-
-@media only screen and (max-width: 549px) {
-  .footer {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-
-    &__section_link {
-      display: flex;
-      flex-direction: column;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    &__section_socail {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
     }
   }
 }
