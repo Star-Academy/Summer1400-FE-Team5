@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../style/css/components/nav.css" />
   <link rel="stylesheet" href="../style/css/components/footer.css" />
   <link rel="stylesheet" href="../style/css/components/button.css" />
+  <link rel="stylesheet" href="../style/css/components/audio.css">
   <link rel="icon" href="../assets/image/favicon.png" />
 </head>
 
@@ -140,7 +141,49 @@
         </ul>
       </section>
 
-      <div class="play__control"></div>
+      <div class="audio">
+        <div class="audio__container">
+          <div class="audio__volume">
+            <button>
+              <svg>
+                <use xlink:href="../assets/image/sprite.svg#speaker-filled-audio-tool" />
+              </svg>
+            </button>
+            <div>
+              <span></span>
+            </div>
+          </div>
+          <div class="audio__actions">
+            <button class="audio__actions--next">
+               <svg>
+                <use xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol" />
+              </svg>
+            </button>
+            <button class="audio__actions--play">
+              <svg>
+                <use xlink:href="../assets/image/sprite.svg#play-button-arrowhead" />
+              </svg>
+            </button>
+            <button class="audio__actions--pervious">
+              <svg>
+                <use xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol-1" />
+              </svg>
+            </button>
+          </div>
+          <div class="audio__info">
+            <img src="https://picsum.photos/110" alt="cover song">
+            <input type="checkbox" id="checkbox-add-to-playlist">
+            <label for="checkbox-add-to-playlist">
+              <svg>
+                <use xlink:href="../assets/image/sprite.svg#heart" />
+              </svg>
+            </label>
+          </div>
+        </div>
+        <div class="audio__timeline">
+          <span></span>
+        </div>
+      </div>
     </div>
   </main>
 

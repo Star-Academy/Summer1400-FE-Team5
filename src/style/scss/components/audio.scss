@@ -1,0 +1,163 @@
+@import '../util/_var';
+
+.audio{
+    width: 100%;
+    height: 11rem;
+    background-color: $background-color-audio;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &__container{
+        width: 100%;
+        height: 6rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__volume{
+        width: 20%;
+        display: flex;
+        height: 2rem;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        & > button{
+            width: 1.2rem;
+            height: 1.2rem;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &>svg{
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        }
+        & > div{
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.397);
+            display: flex;
+            justify-content: end;
+            width: 50%;
+            height: 0.3rem;
+            margin: 0 1rem;
+            & > span{
+                width: 10%;
+                background-color: black;
+            }
+        }
+        
+
+    }
+    &__actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 2.2rem;
+        & > button{
+            width: 3rem;
+            height: 3rem;
+            margin: auto 2rem;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            & > svg{
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        &--play{
+            width: 5rem !important;
+            height: 5rem !important;
+            border-radius: 50%;
+            background-color:black !important;
+            padding-left: 0.3rem;
+            padding-top: 0.3rem;
+
+            &>svg{
+                fill:white;
+            }
+        }
+    }
+    &__info{
+        width: 20%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: end;
+        align-items: center; 
+        height: 11rem;
+        &>input[type=checkbox]{
+            display: none;
+            &:checked ~ label > svg{
+                fill: red !important;
+            }
+        }
+        &>img{
+            height: 100%;
+            max-height: 11rem;
+            width: auto;
+            margin-right: 2rem;
+        }
+        &>label{
+            width: 2rem;
+            height: 2rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            &>svg{
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+    &__timeline{
+        width: 35%;
+        height: 0.2rem;
+        background-color: rgba(255, 255, 255, 0.397);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        &::after , &::before{
+            content: "0:0";
+            font-size: 2rem;
+            color: black;
+            background-color: $background-color-audio;
+            padding: 0 1.5rem;
+            z-index: 10;
+            cursor: default;
+        }
+        & > span{
+            background-color: black;
+            width: 50%;
+            height: 100%;
+            margin-right: auto;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            &:hover{
+                &::after{
+                    content: "";
+                    width: 1rem;
+                    height: 1rem;
+                    background-color: black;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    margin-bottom: 12rem;
+}
