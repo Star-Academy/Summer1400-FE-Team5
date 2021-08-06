@@ -20,6 +20,10 @@
     grid-template-rows: 6fr 5fr;
   }
 
+  @include media.query(25em) {
+    grid-template-rows: 4fr 5fr;
+  }
+
   > .nav {
     position: absolute;
   }
@@ -60,10 +64,12 @@
     h1 {
       color: var.$color-text;
       font-size: 7em;
+      font-weight: 400;
     }
 
     h2 {
       font-size: 4em;
+      font-weight: 400;
     }
 
     p {
