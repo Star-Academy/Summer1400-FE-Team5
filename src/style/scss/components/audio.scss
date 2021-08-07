@@ -36,9 +36,27 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            &>svg{
-                width: 1.2rem;
-                height: 1.2rem;
+            & > input[type=checkbox]{
+                display: none;
+                &:checked ~ label>svg:nth-child(1){
+                    display: block;
+                }
+                &:checked ~ label>svg:nth-child(2){
+                    display: none;
+                }
+            }
+            & > label{
+                cursor: pointer;
+            }
+            &>label>svg{
+                width: 1.3rem;
+                height: 1.3rem;
+            }
+            &>label>svg:nth-child(1){
+                display: none;
+            }
+            &>label>svg:nth-child(2){
+                display: block;
             }
         }
         & > div{
@@ -47,11 +65,23 @@
             display: flex;
             justify-content: end;
             width: 50%;
-            height: 0.3rem;
+            height: 0.4rem;
             margin: 0 1rem;
             & > span{
-                width: 10%;
+                width: 30%;
                 background-color: black;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                &:hover{
+                    &::after{
+                        content: "";
+                        width: 1rem;
+                        height: 1rem;
+                        background-color: black;
+                        border-radius: 50%;
+                    }
+                }
             }
         }
         
@@ -63,7 +93,7 @@
         justify-content: center;
         align-items: center;
         padding-bottom: 2.2rem;
-        & > button{
+        & > button , & > label {
             width: 3rem;
             height: 3rem;
             margin: auto 2rem;
@@ -75,16 +105,34 @@
                 height: 2rem;
             }
         }
-        &--play{
+        & > label{
             width: 5rem !important;
             height: 5rem !important;
             border-radius: 50%;
             background-color:black !important;
             padding-left: 0.3rem;
-            padding-top: 0.3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &>svg{
                 fill:white;
+                &:nth-child(2){
+                    display: none;
+                }
+            }
+
+        }
+        & > input[type=checkbox]{
+            display: none;
+            &:checked ~ label>svg:nth-child(1){
+                display: none;
+            }
+            &:checked ~ label>svg:nth-child(2){
+                display: block;
+            }
+            &:checked ~ label{
+                padding-left: 0rem;
             }
         }
     }
@@ -121,7 +169,7 @@
     }
     &__timeline{
         width: 35%;
-        height: 0.2rem;
+        height: 0.3rem;
         background-color: rgba(255, 255, 255, 0.397);
         display: flex;
         flex-direction: row;

@@ -145,9 +145,15 @@
         <div class="audio__container">
           <div class="audio__volume">
             <button>
-              <svg>
-                <use xlink:href="../assets/image/sprite.svg#speaker-filled-audio-tool" />
-              </svg>
+              <input type="checkbox" id="audio__volume--mute">
+              <label for="audio__volume--mute">
+                <svg>
+                  <use xlink:href="../assets/image/sprite.svg#mute" />
+                </svg>
+                <svg>
+                  <use xlink:href="../assets/image/sprite.svg#speaker-filled-audio-tool" />
+                </svg>
+              </label>
             </button>
             <div>
               <span></span>
@@ -159,11 +165,15 @@
                 <use xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol" />
               </svg>
             </button>
-            <button class="audio__actions--play">
-              <svg>
-                <use xlink:href="../assets/image/sprite.svg#play-button-arrowhead" />
-              </svg>
-            </button>
+            <input type="checkbox" id="play_pause_switch">
+            <label for="play_pause_switch">
+                <svg>
+                  <use xlink:href="../assets/image/sprite.svg#play-button-arrowhead" />
+                </svg>
+                <svg>
+                  <use xlink:href="../assets/image/sprite.svg#music-pause-button-pair-of-lines" />
+                </svg>
+            </label>
             <button class="audio__actions--pervious">
               <svg>
                 <use xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol-1" />
