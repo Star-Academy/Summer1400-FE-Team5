@@ -7,7 +7,6 @@
 
   &__container {
     margin-top: 10rem !important;
-    padding-bottom: 4rem;
 
     overflow: visible !important;
 
@@ -32,6 +31,18 @@
     padding: 0 4rem;
 
     transform: translateY(-6.9rem);
+
+    @include media.query(phone) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'image'
+        'name'
+        'singer'
+        'follow'
+        'actions';
+
+      justify-items: center;
+    }
   }
 
   &__image {
@@ -77,6 +88,11 @@
     justify-self: start;
 
     font-size: 1rem;
+
+    @include media.query(phone) {
+      justify-self: center;
+      margin: 1rem 0px;
+    }
   }
 
   &__actions {
@@ -147,6 +163,11 @@
     @include media.query(32em) {
       column-count: 1;
     }
+  }
+
+  &__lyrics,
+  &__suggestion {
+    padding-bottom: 4rem;
   }
 }
 
