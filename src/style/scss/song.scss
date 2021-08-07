@@ -1,97 +1,95 @@
 @use 'sass:string';
 @use 'util/var';
 @use 'util/mixins';
+@use 'util/media';
 
 .song {
+  $image-size: 15rem;
+
   &__container {
     margin-top: 10rem !important;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
 
     overflow: visible !important;
 
     @include mixins.round-section();
-  }
 
-  &__intro {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    transform: translateY(-7.5rem);
-
-    & > img {
-      margin-right: 10rem;
-
-      border-radius: 50%;
-      box-shadow: 1px 5px 12px rgba(0, 0, 0, 0.322);
-
-      @media only screen and (max-width: 494px) {
-        width: 60%;
-        margin: auto;
-      }
+    @include media.query(phone) {
+      margin-top: 15rem !important;
     }
   }
 
   &__info {
+    display: grid;
+    grid-template-columns: min-content 1fr max-content;
+    grid-template-rows: 1fr repeat(3, min-content);
+    grid-template-areas:
+      'image . .'
+      'image name actions'
+      'image singer .'
+      'image follow .';
+
+      gap: 0 2rem;
+      padding: 0 4rem;
+
+      transform: translateY(-6.9rem);
+  }
+
+  &__image {
+    display: block;
+    width: $image-size;
+    height: $image-size;
+    grid-area: image;
+
+    border-radius: 50%;
+    box-shadow: 1px 5px 12px rgba(0, 0, 0, 0.322);
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  &__name {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 5rem 6rem auto auto;
+    grid-area: name;
 
-    @media only screen and (max-width: 494px) {
-      width: 100%;
-      margin: auto;
-    }
+    font-size: 3rem;
+    font-weight: 400;
 
-    & > div {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    & > small {
+      padding: 0.1rem 1rem;
+      margin-right: 1rem;
 
-      & > h1 {
-        font-size: 3rem;
-        margin: 0 1rem;
-      }
-
-      & > div {
-        padding: 0.1rem 1rem;
-        border-radius: 1rem;
-        border: 1px solid var.$color-tomato-red;
-      }
-    }
-
-    & > button {
-      width: auto;
-      height: 3.5rem;
-      background-color: var.$color-tomato-red;
       border-radius: 1rem;
-      border: 0.15rem solid var.$color-tomato-red;
-      padding: 0.7rem 0.7rem;
-      margin: 1rem;
-      cursor: pointer;
-      transition: 0.5s all ease;
-      color: #fefefe;
+      font-size: 1.3rem;
     }
+  }
+
+  &__singer {
+    grid-area: singer;
+
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+
+  &__follow {
+    margin-top: 1rem;
+    grid-area: follow;
+    justify-self: start;
+
+    font-size: 1rem;
   }
 
   &__actions {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-grow: 0.4;
-    align-items: center;
-    margin: 5rem auto auto 5rem;
+    grid-area: actions;
+    align-self: end;
 
-    @media only screen and (max-width: 684px) {
-      width: 100%;
-      margin: auto;
-    }
+    & > button {
+      margin-left: 1rem;
 
-    @media only screen and (max-width: 684px) {
-      width: 100%;
-      margin: auto;
+      &:last-child {
+        margin-left: 0;
+      }
     }
   }
 
@@ -100,7 +98,7 @@
 
     &__box {
       display: flex;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       padding-bottom: 1rem;
       justify-content: center;
       align-items: center;

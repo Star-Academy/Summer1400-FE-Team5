@@ -62,20 +62,20 @@
     </nav>
 
     <main class="song__container">
-      <section class="song__intro">
+      <section class="song__info">
         <img
+          class="song__image"
           src="https://picsum.photos/200"
           alt="song cover image"
-          class="song__image"
         />
-        <div class="song__info">
-          <div>
-            <h1 class="song__name">مرداب</h1>
-            <div class="song__gener">پاپ</div>
-          </div>
-          <h3 class="song__singer">حسن شماعی زاده</h3>
-          <button class="song__follow">دنبال کردن</button>
-        </div>
+
+        <h1 class="song__name">
+          مرداب
+          <small>پاپ</small>
+        </h1>
+
+        <h3 class="song__singer">حسن شماعی زاده</h3>
+        <button class="button song__follow">دنبال کردن</button>
 
         <div class="song__actions">
           <button class="button--icon" data-label="افزودن به علاقه مندی ها">
@@ -98,14 +98,20 @@
       <input type="radio" name="tab" id="suggestion" class="song__tab" />
 
       <div class="song__tab__box">
-        <label for="lyrics" id="song__lyrics__label" class="song__tab__label">متن آهنگ</label>
+        <label for="lyrics" id="song__lyrics__label" class="song__tab__label">
+          متن آهنگ
+        </label>
 
-        <label for="suggestion" id="song__suggestion__label" class="song__tab__label">
+        <label
+          for="suggestion"
+          id="song__suggestion__label"
+          class="song__tab__label"
+        >
           آهنگ های پیشنهادی
-        </label>  
+        </label>
       </div>
 
-      <p class='song__lyrics'>
+      <p class="song__lyrics">
         میون یه دشت لخت زير خورشید کوير مونده یک مرداب پیر توی دست خاک اسیر منم
         اون مرداب پیر از همه دنیا جدا داغ خورشید به تنم زنجیر زمین به پام من
         همونم که یه روز می خواستم دريا بشم می خواستم بزرگترين دريای دنيا بشم
