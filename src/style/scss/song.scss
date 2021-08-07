@@ -1,3 +1,4 @@
+@use 'sass:string';
 @use 'util/var';
 @use 'util/mixins';
 
@@ -94,15 +95,33 @@
     }
   }
 
-  &__options {
-    &--suggestion,
-    &--lyrics {
-      background-color: transparent;
-      cursor: pointer;
+  &__tab {
+    display: none;
+
+    &__box {
+      display: flex;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      justify-content: center;
+      align-items: center;
+
+      border-bottom: 2px dashed rgba(0, 0, 0, 0.411);
+    }
+
+    &__label {
+      margin: 0 0.5rem;
+      padding: 0.1rem 1rem;
+
+      border: 1px solid transparent;
+      border-radius: 1rem;
+
       color: black;
-      margin: 1rem;
-      font-size: 1.2rem;
+      background-color: transparent;
+      font-size: 1.4rem;
+
       transition: 0.2s all ease;
+
+      cursor: pointer;
     }
   }
 
@@ -113,10 +132,6 @@
   }
 
   &__suggestion {
-    & > h1 {
-      cursor: default;
-      margin: 1.5rem auto;
-    }
     &__list {
       & > li {
         display: flex;
@@ -152,46 +167,33 @@
 }
 
 #lyrics {
-  display: none;
-
   & ~ .song__lyrics {
     display: none;
   }
 
-  &:checked ~ .song__lyrics {
-    display: block;
-  }
+  &:checked {
+    & ~ .song__lyrics {
+      display: block;
+    }
 
-  &:checked ~ .song__options--lyrics {
-    padding: 0.1rem 1rem;
-    border-radius: 1rem;
-    border: 1px solid var.$color-tomato-red;
-    font-weight: bold;
+    & ~ .song__tab__box > #song__lyrics__label {
+      border-color: var.$color-tomato-red;
+    }
   }
 }
 
 #suggestion {
-  display: none;
-
   & ~ .song__suggestion {
     display: none;
   }
 
-  &:checked ~ .song__suggestion {
-    display: block;
-  }
+  &:checked {
+    & ~ .song__suggestion {
+      display: block;
+    }
 
-  &:checked ~ .song__options--suggestion {
-    padding: 0.1rem 1rem;
-    border-radius: 1rem;
-    border: 1px solid var.$color-tomato-red;
-    font-weight: bold;
+    & ~ .song__tab__box > #song__suggestion__label {
+      border-color: var.$color-tomato-red;
+    }
   }
-}
-
-.line {
-  width: 100%;
-  height: 5px;
-  border-bottom: 2px dashed rgba(0, 0, 0, 0.411);
-  margin: 1rem 0;
 }
