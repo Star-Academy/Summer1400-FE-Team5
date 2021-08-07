@@ -29,10 +29,10 @@
       'image singer .'
       'image follow .';
 
-      gap: 0 2rem;
-      padding: 0 4rem;
+    gap: 0 2rem;
+    padding: 0 4rem;
 
-      transform: translateY(-6.9rem);
+    transform: translateY(-6.9rem);
   }
 
   &__image {
@@ -125,9 +125,29 @@
   }
 
   &__lyrics {
-    width: 90%;
-    margin: auto;
-    font-size: 1.3rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+    max-width: 120rem;
+
+    column-count: 4;
+    column-gap: 2rem;
+
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 1.7;
+    list-style: none;
+
+    @include media.query(tablet) {
+      column-count: 3;
+    }
+
+    @include media.query(phone) {
+      column-count: 2;
+    }
+
+    @include media.query(32em) {
+      column-count: 1;
+    }
   }
 
   &__suggestion {
