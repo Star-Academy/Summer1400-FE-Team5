@@ -1,0 +1,44 @@
+.song__item {
+  display: flex;
+  align-items: center;
+  color: #444;
+  text-decoration: none;
+}
+.song__item__list {
+  padding: 0 4rem;
+  list-style: none;
+}
+.song__item__list li {
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #eee;
+  box-shadow: 0 0 1.5rem #00000010;
+  transition: all 0.3s ease;
+}
+.song__item__list li:hover {
+  background: #d5d5d5;
+}
+.song__item__image {
+  display: block;
+  margin-left: 2rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  box-shadow: 0 0 1rem #00000052;
+  overflow: hidden;
+}
+.song__item__name {
+  margin-left: 1rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+.song__item__singer {
+  font-size: 1.3rem;
+}
+.song__item__duration {
+  margin-right: auto;
+  font-size: 1.3rem;
+}
+
+/*# sourceMappingURL=song-item.css.map */
