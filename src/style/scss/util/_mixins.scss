@@ -1,0 +1,16 @@
+@use 'sass:math';
+@use 'var';
+@use 'media';
+
+@mixin round-section($background-color: #fff) {
+  margin: var.$round-section-margin;
+
+  border-radius: 3rem;
+  background-color: $background-color;
+  box-shadow: 0 0 4rem #00000033;
+  overflow: hidden;
+
+  @include media.query(tablet) {
+    margin: math.div(var.$round-section-margin, 2);
+  }
+}

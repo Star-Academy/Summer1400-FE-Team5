@@ -1,0 +1,65 @@
+@use './util/mixins';
+@use './util/media';
+
+.section {
+  display: grid;
+  padding: 6rem 2rem;
+  grid-template-columns: 15rem max-content;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'image title'
+    'image text';
+
+  justify-content: center;
+  gap: 0.5rem 3rem;
+
+  @include mixins.round-section();
+
+  @include media.query(tablet) {
+    grid-template-columns: 12rem max-content;
+    gap: 0.5rem 2rem;
+
+    font-size: 0.9rem;
+  }
+
+  @include media.query(phone) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas:
+      'image'
+      'title'
+      'text';
+
+    justify-items: center;
+
+    font-size: 0.8rem;
+  }
+
+  &__title {
+    grid-area: title;
+    align-self: end;
+
+    font-size: 3em;
+    font-weight: 400;
+    text-align: center;
+
+    @include media.query(phone) {
+      margin-top: 1rem;
+    }
+  }
+
+  &__text {
+    grid-area: text;
+
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  &__image {
+    width: 100%;
+
+    grid-area: image;
+    justify-self: left;
+    align-self: center;
+  }
+}

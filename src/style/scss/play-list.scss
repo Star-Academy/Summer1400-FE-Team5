@@ -1,0 +1,14 @@
+@use 'util/var';
+@use 'util/mixins';
+
+.play-list {
+  padding: 2rem 0;
+
+  @include mixins.round-section();
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: center;
+  }
+}
