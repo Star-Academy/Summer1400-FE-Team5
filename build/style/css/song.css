@@ -1,0 +1,160 @@
+.song__container {
+  margin-top: 10rem !important;
+  overflow: visible !important;
+  margin: 3rem;
+  border-radius: 3rem;
+  background-color: #fff;
+  box-shadow: 0 0 4rem #00000033;
+  overflow: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  .song__container {
+    margin: 1.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .song__container {
+    margin-top: 15rem !important;
+  }
+}
+.song__info {
+  display: grid;
+  grid-template-columns: min-content 1fr max-content;
+  grid-template-rows: 1fr repeat(3, min-content);
+  grid-template-areas: "image . ." "image name actions" "image singer ." "image follow .";
+  gap: 0 2rem;
+  padding: 0 4rem;
+  transform: translateY(-6.9rem);
+}
+@media only screen and (max-width: 37.5em) {
+  .song__info {
+    grid-template-columns: 1fr;
+    grid-template-areas: "image" "name" "singer" "follow" "actions";
+    justify-items: center;
+  }
+}
+.song__image {
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  grid-area: image;
+  border-radius: 50%;
+  box-shadow: 1px 5px 12px #00000052;
+  overflow: hidden;
+  object-fit: cover;
+}
+.song__name {
+  display: flex;
+  align-items: center;
+  grid-area: name;
+  font-size: 3rem;
+  font-weight: 400;
+}
+.song__name > small {
+  padding: 0.1rem 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #2395ff;
+  font-size: 1.3rem;
+}
+.song__singer {
+  grid-area: singer;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+.song__follow {
+  margin-top: 1rem;
+  grid-area: follow;
+  justify-self: start;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .song__follow {
+    justify-self: center;
+    margin: 1rem 0px;
+  }
+}
+.song__actions {
+  display: flex;
+  grid-area: actions;
+  align-self: end;
+}
+.song__actions > button {
+  margin-left: 1rem;
+}
+.song__actions > button:last-child {
+  margin-left: 0;
+}
+.song__tab {
+  display: none;
+}
+.song__tab__box {
+  display: flex;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.411);
+}
+.song__tab__label {
+  margin: 0 0.5rem;
+  padding: 0.1rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  color: black;
+  background-color: transparent;
+  font-size: 1.4rem;
+  transition: 0.2s all ease;
+  cursor: pointer;
+}
+.song__lyrics {
+  margin: 0 auto;
+  padding: 0 4rem;
+  max-width: 120rem;
+  column-count: 4;
+  column-gap: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1.7;
+  list-style: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .song__lyrics {
+    column-count: 3;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .song__lyrics {
+    column-count: 2;
+  }
+}
+@media only screen and (max-width: 32em) {
+  .song__lyrics {
+    column-count: 1;
+  }
+}
+.song__lyrics, .song__suggestion {
+  padding-bottom: 4rem;
+}
+
+#lyrics ~ .song__lyrics {
+  display: none;
+}
+#lyrics:checked ~ .song__lyrics {
+  display: block;
+}
+#lyrics:checked ~ .song__tab__box > #song__lyrics__label {
+  border-color: #2395ff;
+}
+
+#suggestion ~ .song__suggestion {
+  display: none;
+}
+#suggestion:checked ~ .song__suggestion {
+  display: block;
+}
+#suggestion:checked ~ .song__tab__box > #song__suggestion__label {
+  border-color: #2395ff;
+}
+
+/*# sourceMappingURL=song.css.map */

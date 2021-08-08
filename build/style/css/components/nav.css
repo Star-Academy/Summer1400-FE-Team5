@@ -1,0 +1,140 @@
+.nav__link {
+  display: block;
+  margin: 0 2rem;
+  color: #444 !important;
+  font-size: 1.5rem !important;
+}
+.nav__link:hover {
+  color: #2395ff !important;
+}
+.nav__link__box {
+  display: flex;
+  padding: 1.5rem 2rem;
+  list-style: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__link__box {
+    display: none;
+  }
+}
+.nav__menu {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translate(-100%, -50%);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  list-style: none;
+  z-index: 1000;
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__menu {
+    display: flex;
+  }
+}
+.nav__menu .nav__link {
+  min-width: 8rem;
+  color: #fff !important;
+  text-align: center;
+}
+.nav__menu .nav__link:hover {
+  transform: translateX(1rem);
+}
+.nav__menu__toggle {
+  display: none;
+  position: fixed;
+  top: 3.5rem;
+  right: 3.5rem;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 2rem 2px #00000050;
+  cursor: pointer;
+  z-index: 1000;
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__menu__toggle {
+    display: flex;
+  }
+}
+.nav__menu__toggle > div {
+  position: relative;
+}
+.nav__menu__toggle > div, .nav__menu__toggle > div::after, .nav__menu__toggle > div::before {
+  width: 2rem;
+  height: 2px;
+  border-radius: 1rem;
+  background-color: black;
+  transition: 0.2s all ease;
+}
+.nav__menu__toggle > div::after, .nav__menu__toggle > div::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav__menu__toggle > div::after {
+  margin-top: 0.5rem;
+}
+.nav__menu__toggle > div::before {
+  margin-top: -0.5rem;
+}
+.nav__menu__toggle:hover > div::after {
+  margin-top: 0.7rem;
+}
+.nav__menu__toggle:hover > div::before {
+  margin-top: -0.7rem;
+}
+.nav__menu__background {
+  display: none;
+  position: fixed;
+  top: 3.75rem;
+  right: 3.75rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: #2395ff;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: 0.6s all ease;
+  z-index: 999;
+}
+@media only screen and (max-width: 37.5em) {
+  .nav__menu__background {
+    display: block;
+  }
+}
+
+#toggle-menu {
+  display: none;
+}
+#toggle-menu:checked ~ .nav__menu {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+#toggle-menu:checked ~ .nav__menu__toggle > div {
+  background-color: transparent;
+}
+#toggle-menu:checked ~ .nav__menu__toggle > div::after {
+  margin: 0;
+  top: 50%;
+  transform: rotate(135deg);
+}
+#toggle-menu:checked ~ .nav__menu__toggle > div::before {
+  margin: 0;
+  top: 50%;
+  transform: rotate(-135deg);
+}
+#toggle-menu:checked ~ .nav__menu__background {
+  transform: scale(100);
+}
+
+/*# sourceMappingURL=nav.css.map */
