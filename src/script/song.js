@@ -1,3 +1,4 @@
+const id = new URLSearchParams(window.location.search).get('id');
 const suggestionTemplate = document.querySelector('template#suggestion');
 const suggestionList = document.querySelector('.song__item__list');
 
@@ -28,3 +29,11 @@ function addSuggestion({ id, name, artist, cover, duration }) {
 
   suggestionList.appendChild(song);
 }
+
+function addToPlayList() {
+  console.log(`add ${id} to playList`);
+}
+
+document
+  .querySelector('#add-to-playlist')
+  .addEventListener('click', addToPlayList);
