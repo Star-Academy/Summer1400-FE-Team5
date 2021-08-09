@@ -1,3 +1,4 @@
+@use './util/media';
 @use 'components/form-field';
 
 html,
@@ -25,12 +26,19 @@ main {
   background-color: #dadfffbf;
   backdrop-filter: blur(8px);
   box-shadow: 0 0.1rem 2rem 0.4rem #00000045;
+  @include media.query(phone) {
+    padding: 2rem 1rem;
+  }
 
   &__box {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+
+    @include media.query(phone) {
+      padding: 1rem;
+    }
   }
 
   &__title {
@@ -43,6 +51,12 @@ main {
     margin: 0.5rem;
     text-align: center;
     font-size: 1.3rem;
+  }
+
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0 1.5rem;
   }
 
   .button--inline {
