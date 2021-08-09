@@ -51,7 +51,8 @@ $font-size-small: 1.2rem;
 
     transition: all 0.3s ease;
 
-    &:focus {
+    &:focus,
+    &:-webkit-autofill {
       @extend %active__input;
 
       & + .form__field__label {
