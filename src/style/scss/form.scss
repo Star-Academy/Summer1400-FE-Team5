@@ -1,3 +1,4 @@
+@use './util/var';
 @use './util/media';
 @use 'components/form-field';
 
@@ -16,6 +17,7 @@ main {
 
 .form {
   display: flex;
+  position: relative;
   flex-direction: column;
 
   padding: 2rem;
@@ -26,6 +28,8 @@ main {
   background-color: #dadfffbf;
   backdrop-filter: blur(8px);
   box-shadow: 0 0.1rem 2rem 0.4rem #00000045;
+  overflow: hidden;
+
   @include media.query(phone) {
     padding: 2rem 1rem;
   }
@@ -51,6 +55,37 @@ main {
     margin: 0.5rem;
     text-align: center;
     font-size: 1.3rem;
+  }
+
+  &__progress {
+    position: absolute;
+    height: 0.4rem;
+    top: 0;
+    left: 0;
+
+    border-radius: 1rem;
+
+    &--loading {
+      background-color: var.$color-primary;
+      animation: progress 2.2s infinite;
+    }
+
+    @keyframes progress {
+      from {
+        left: -90%;
+        right: 100%;
+      }
+
+      60% {
+        left: -90%;
+        right: 100%;
+      }
+
+      to {
+        left: 100%;
+        right: -35%;
+      }
+    }
   }
 
   &__group {
