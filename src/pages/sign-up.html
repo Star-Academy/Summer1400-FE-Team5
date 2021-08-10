@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="../style/css/form.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="icon" href="../assets/image/favicon.png" />
+    <script src="../script/api/sign-up.js" defer></script>
     <script src="../script/form.js" defer></script>
   </head>
   <body>
     <main class="form__box">
-      <form class="form">
+      <form class="form" novalidate>
         <div class="form__progress"></div>
 
         <h1 class="form__title">ثبت نام</h1>
         <h3 class="form__subtitle">گذرگاه سرزمین رویا</h3>
 
-        <div class="form__field">
+        <div id="email-field" class="form__field">
           <input
             id="email"
             type="email"
@@ -35,7 +36,7 @@
         </div>
 
         <div class="form__group">
-          <div class="form__field">
+          <div id="firstname-field" class="form__field">
             <input
               id="firstname"
               type="text"
@@ -51,7 +52,7 @@
             <span class="form__field__status"></span>
           </div>
 
-          <div class="form__field">
+          <div id="lastname-field" class="form__field">
             <input
               id="lastname"
               type="text"
@@ -68,7 +69,7 @@
           </div>
         </div>
 
-        <div class="form__field">
+        <div id="password-field" class="form__field">
           <input
             id="password"
             type="password"
@@ -84,7 +85,7 @@
           <span class="form__field__status"></span>
         </div>
 
-        <div class="form__field">
+        <div id="repeat-password-field" class="form__field">
           <input
             id="repeat-password"
             type="password"
