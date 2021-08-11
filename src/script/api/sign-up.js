@@ -1,4 +1,5 @@
 const form = document.querySelector('form');
+const progress = form.querySelector('.form__progress');
 const emailField = document.getElementById('email-field');
 const firstNameField = document.getElementById('firstname-field');
 const lastNameField = document.getElementById('lastname-field');
@@ -75,6 +76,8 @@ form.addEventListener('submit', async e => {
 
   if (!isValid) return;
 
+  progress.classList.add('form__progress--loading');
+
   const api = new Api();
 
   const res = await api.post('/user/register', {
@@ -84,6 +87,8 @@ form.addEventListener('submit', async e => {
     firstName,
     lastName
   });
+
+  progress.classList.remove('form__progress--loading');
 
   switch (res.status) {
     case 201:

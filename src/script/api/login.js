@@ -1,4 +1,5 @@
 const form = document.querySelector('form');
+const progress = form.querySelector('.form__progress');
 const emailField = document.getElementById('email-field');
 const passwordField = document.getElementById('password-field');
 
@@ -30,12 +31,16 @@ form.addEventListener('submit', async e => {
 
   if (!isValid) return;
 
+  progress.classList.add('form__progress--loading');
+
   const api = new Api();
 
   const res = await api.post('/user/login', {
     email,
     password
   });
+
+  progress.classList.remove('form__progress--loading');
 
   switch (res.status) {
     case 200:
@@ -47,7 +52,7 @@ form.addEventListener('submit', async e => {
     case 401:
       showError(passwordField, res.body.message);
       break;
-    
+
     case 404:
       showError(emailField, res.body.message);
       break;
