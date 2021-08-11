@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="../style/css/form.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
+    <script src="../script/api/index.js"></script>
+    <script src="../script/api/login.js" defer></script>
     <script src="../script/form.js" defer></script>
   </head>
   <body>
     <main class="form__box">
-      <form class="form">
+      <form class="form" novalidate>
         <div class="form__progress"></div>
         <a class="form__logo" href="./index.html">
           <img src="../assets/image/favicon.png" alt="logo" />
@@ -21,7 +23,7 @@
         <h1 class="form__title">ورود</h1>
         <h3 class="form__subtitle">گذرگاه سرزمین رویا</h3>
 
-        <div class="form__field">
+        <div id="email-field" class="form__field">
           <input
             id="email"
             type="email"
@@ -37,7 +39,7 @@
           <span class="form__field__status"></span>
         </div>
 
-        <div class="form__field">
+        <div id="password-field" class="form__field">
           <input
             id="password"
             type="password"
