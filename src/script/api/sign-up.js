@@ -1,16 +1,16 @@
 const form = document.querySelector('form');
 const emailField = document.getElementById('email-field');
-const firstnameField = document.getElementById('firstname-field');
-const lastnameField = document.getElementById('lastname-field');
+const firstNameField = document.getElementById('firstname-field');
+const lastNameField = document.getElementById('lastname-field');
 const passwordField = document.getElementById('password-field');
 const repeatPasswordField = document.getElementById('repeat-password-field');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
   const email = emailField.children[0].value;
-  const firstname = firstnameField.children[0].value;
-  const lastname = lastnameField.children[0].value;
+  const firstName = firstNameField.children[0].value;
+  const lastName = lastNameField.children[0].value;
   const password = passwordField.children[0].value;
   const repeatPassword = repeatPasswordField.children[0].value;
 
@@ -32,19 +32,19 @@ form.addEventListener('submit', e => {
       ]
     },
     {
-      field: firstnameField,
+      field: firstNameField,
       rules: [
         {
-          valid: firstname.trim() !== '',
+          valid: firstName.trim() !== '',
           message: 'نام خود را وارد کنید'
         }
       ]
     },
     {
-      field: lastnameField,
+      field: lastNameField,
       rules: [
         {
-          valid: lastname.trim() !== '',
+          valid: lastName.trim() !== '',
           message: 'نام خانوادگی خود را وارد کنید'
         }
       ]
@@ -75,5 +75,25 @@ form.addEventListener('submit', e => {
 
   if (!isValid) return;
 
-  console.log('submit');
+  const api = new Api();
+
+  const res = await api.post('/user/register', {
+    username: email.split('@')[0],
+    email,
+    password,
+    firstName,
+    lastName
+  });
+
+  switch (res.status) {
+    case 201:
+      localStorage.setItem('id', res.body.id);
+      localStorage.setItem('token', res.body.token);
+      window.location.replace('./user.html');
+      break;
+
+    case 400:
+      showError(emailField, res.body.message);
+      break;
+  }
 });
