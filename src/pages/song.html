@@ -14,26 +14,42 @@
     <link rel="stylesheet" href="../style/css/components/audio.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
     <script src="../script/song.js" defer></script>
+    <script src="../script/nav.js" defer></script>
   </head>
 
   <body>
     <nav class="nav">
       <ul class="nav__link__box">
         <li>
-          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
+          <a class="nav__link--home nav__link" href="./index.html">
+            <img src="../assets/image/favicon.png" alt="آهنگیفای" />
+            <span class="button--inline">آهنگیفای</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="nav__link button--inline" href="./song-list.html">
+            آهنگ ها
+          </a>
         </li>
         <li>
+          <a class="nav__link button--inline" href="./play-list.html">
+            علاقه مندی ها
+          </a>
+        </li>
+
+        <li class="nav__auth__box">
+          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
         </li>
-        <li>
-          <a class="nav__link button--inline" href="./song-list.html"
-            >آهنگ ها</a
-          >
-        </li>
-        <li>
-          <a class="nav__link button--inline" href="./play-list.html"
-            >علاقه مندی ها</a
-          >
+
+        <li class="nav__user__box">
+          <a class="nav__user" href="./user.html">
+            <div class="nav__user__image">ع</div>
+            <div class="nav__user__name">علی سالمی</div>
+          </a>
+
+          <button class="nav__logout">خروج</button>
         </li>
       </ul>
 
@@ -51,14 +67,14 @@
           <a class="nav__link button--inline" href="./login.html">ورود</a>
         </li>
         <li>
-          <a class="nav__link button--inline" href="./song-list.html"
-            >آهنگ ها</a
-          >
+          <a class="nav__link button--inline" href="./song-list.html">
+            آهنگ ها
+          </a>
         </li>
         <li>
-          <a class="nav__link button--inline" href="./play-list.html"
-            >علاقه مندی ها</a
-          >
+          <a class="nav__link button--inline" href="./play-list.html">
+            علاقه مندی ها
+          </a>
         </li>
       </ul>
     </nav>
