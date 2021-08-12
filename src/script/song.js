@@ -2,8 +2,12 @@ const id = new URLSearchParams(window.location.search).get('id');
 const suggestionTemplate = document.querySelector('template#suggestion');
 const suggestionList = document.querySelector('.song__item__list');
 
+const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
+
 function renderSong({ name, artist, lyrics, file, cover }) {
-  document.querySelector('.song__name').innerHTML = name;
+  document.querySelector('.song__name').innerHTML = `${name}<small>${
+    geners[name.length % geners.length]
+  }</small>`;
   document.querySelector('.song__singer').innerHTML = artist;
   document.querySelector('.song__image').src = cover;
   document.querySelector('.audio__info img').src = cover;
@@ -37,3 +41,15 @@ function addToPlayList() {
 document
   .querySelector('#add-to-playlist')
   .addEventListener('click', addToPlayList);
+
+(async () => {
+  const song = await getSong(id);
+
+  renderSong({
+    name: song.name,
+    artist: song.artist,
+    lyrics: song.lyrics,
+    file: song.file,
+    cover: song.cover
+  });
+})();
