@@ -26,6 +26,7 @@
 
   > .nav {
     position: absolute;
+    width: calc(100% - #{2 * var.$round-section-margin});
   }
 
   &__background {
