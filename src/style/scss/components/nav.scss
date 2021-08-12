@@ -211,9 +211,11 @@
       justify-content: center;
 
       border-radius: 50%;
+      font-size: 1.5rem;
       color: #fff;
       background-color: var.$color-primary;
-      font-size: 1.5rem;
+      background-size: cover;
+      background-position: center;
     }
 
     &__name {
@@ -236,6 +238,7 @@
     font-size: 1.2rem !important;
 
     cursor: pointer;
+    background-color: transparent;
     transition: all 0.3s ease;
 
     &:hover,
