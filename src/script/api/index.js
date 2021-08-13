@@ -27,9 +27,15 @@ class Api {
       body: JSON.stringify(body)
     });
 
+    let resBody;
+    const status = res.status;
+    try {
+      resBody = await res.json();
+    } catch {}
+
     return {
-      status: res.status,
-      body: await res.json()
+      status,
+      body: resBody
     };
   }
 }
