@@ -33,6 +33,8 @@ main {
 
       list-style: none;
       overflow-x: auto;
+
+      @include mixins.scrollbar();
     }
   }
 

@@ -1,4 +1,5 @@
 @use 'util/var';
+@use 'util/mixins';
 
 *,
 *::before,
@@ -21,4 +22,6 @@ html {
 body {
   color: var.$color-text;
   background-color: var.$background-color;
+
+  @include mixins.scrollbar();
 }
