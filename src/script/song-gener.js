@@ -20,8 +20,28 @@ generName.innerText = `آهنگ های ${new URLSearchParams(
   window.location.search
 ).get('gener')}`;
 
-(async () => {
-  let songs = await getSongsList({ size: 50 });
+let lastScroll = new Date();
+let loading = false;
+let page = 0;
+let pageSize = 50;
+
+async function load() {
+  page++;
+  loading = true;
+  let songs = await getSongsList({ size: pageSize, page });
+  loading = false;
 
   songs.forEach(song => renderSong(song));
-})();
+}
+
+load();
+
+document.addEventListener('scroll', () => {
+  const now = new Date();
+
+  if (now - lastScroll < 300 || loading) return;
+  lastScroll = now;
+
+  if (document.body.scrollHeight - (window.scrollY + window.innerHeight) < 800)
+    load();
+});
