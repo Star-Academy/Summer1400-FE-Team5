@@ -2,7 +2,7 @@ const formFields = document.querySelectorAll('.form__field');
 
 function showError(field, message) {
   field.classList.add('form__field--wrong');
-  field.lastElementChild.innerHTML = message;
+  field.lastElementChild.innerText = message;
 }
 
 function validate(fieldRules) {
