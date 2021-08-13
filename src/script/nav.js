@@ -15,12 +15,12 @@ async function updateNav() {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-    userName.innerHTML = `${user.first_name} ${user.last_name}`;
+    userName.innerText = `${user.first_name} ${user.last_name}`;
 
     if (user.avatar) {
       userImage.style.backgroundImage = `url(${user.avatar})`;
       userImage.style.backgroundColor = '#fff';
-    } else userImage.innerHTML = user.first_name[0];
+    } else userImage.innerText = user.first_name[0];
   } else {
     nav.classList.remove('nav--logged-in');
     nav.classList.add('nav--logged-out');
