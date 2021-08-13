@@ -78,20 +78,9 @@
     text-decoration: none;
 
     &__box {
-      margin: 0 1rem;
-      flex: 0 0 20rem;
-
       border-radius: 2rem;
       box-shadow: 0 0 2rem #25252563;
       overflow: hidden;
-
-      &:first-child {
-        margin-right: 2rem;
-      }
-
-      &:last-child {
-        margin-left: 2rem;
-      }
     }
 
     &__image {

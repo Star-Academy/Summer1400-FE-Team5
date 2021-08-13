@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
-    <link rel="stylesheet" href="../style/css/song-list.css" />
+    <link rel="stylesheet" href="../style/css/components/song-item.css" />
+    <link rel="stylesheet" href="../style/css/song-gener.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
     <title>آهنگ ها |‌ آهنگیفای</title>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
+    <script src="../script/api/song-list.js"></script>
+    <script src="../script/song-gener.js" defer></script>
     <script src="../script/nav.js" defer></script>
   </head>
   <body>
@@ -81,19 +84,22 @@
       </ul>
     </nav>
 
-    <template id="song__item__template">
-      <li class="song__item__box">
-        <a class="song__item" href="./song.html?id=">
-          <img class="song__item__image" src="" alt="" loading="lazy" />
-          <div class="song__item__info">
-            <h3 class="song__item__name"></h3>
-            <span class="song__item__singer"></span>
+    <template id="song__unit__template">
+      <div class="song__unit__box">
+        <a class="song__unit" href="./song.html?id=">
+          <img class="song__unit__image" src="" alt="" loading="lazy" />
+          <div class="song__unit__info">
+            <h3 class="song__unit__name"></h3>
+            <span class="song__unit__singer"></span>
           </div>
         </a>
-      </li>
+      </div>
     </template>
 
-    <main></main>
+    <main>
+      <h1 class="song__gener__name"></h1>
+      <section class="song__gener__box"></section>
+    </main>
 
     <footer class="footer">
       <div class="footer__social">
