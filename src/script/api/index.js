@@ -13,10 +13,14 @@ class Api {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
-
+    let resBody;
+    const status = res.status;
+    try {
+      resBody = await res.json();
+    } catch {}
     return {
       status: res.status,
-      body: await res.json()
+      body: resBody
     };
   }
 

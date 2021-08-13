@@ -5,22 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/css/main.css" />
-    <link rel="stylesheet" href="../style/css/play-list.css" />
-    <link rel="stylesheet" href="../style/css/components/song-item.css" />
-    <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
-    <link rel="stylesheet" href="../style/css/form.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
+    <link rel="stylesheet" href="../style/css/song-list.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
+    <title>آهنگ ها |‌ آهنگیفای</title>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/nav.js" defer></script>
-    <script src="../script/play-list.js" defer></script>
-    <script src="../script/form.js" defer></script>
-    <title>علاقه مندی هام |‌ آهنگیفای</title>
   </head>
-
   <body>
     <nav class="nav">
       <ul class="nav__link__box">
@@ -43,7 +37,9 @@
         </li>
 
         <li class="nav__auth__box">
-          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
+          <a class="nav__link button--inline" href="./sign-up.html">
+            ثبت نام
+          </a>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
         </li>
 
@@ -65,7 +61,9 @@
       <div class="nav__menu__background"></div>
       <ul class="nav__menu">
         <li>
-          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
+          <a class="nav__link button--inline" href="./sign-up.html">
+            ثبت نام
+          </a>
         </li>
         <li>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
@@ -83,52 +81,19 @@
       </ul>
     </nav>
 
-    <template id="play-list-item">
-      <details>
-        <summary></summary>
-        <ul class="song__item__list"></ul>
-      </details>
-    </template>
-
-    <template id="song-item">
-      <li>
-        <a href="./song.html" class="song__item">
-          <img class="song__item__image" src="" alt="" />
-          <div>
+    <template id="song__item__template">
+      <li class="song__item__box">
+        <a class="song__item" href="./song.html?id=">
+          <img class="song__item__image" src="" alt="" loading="lazy" />
+          <div class="song__item__info">
             <h3 class="song__item__name"></h3>
-            <div class="song__item__singer"></div>
-          </div>
-          <div class="song__item__delete">
-            <svg id="delete-song">
-              <use xlink:href="../assets/image/sprite.svg#delete" />
-            </svg>
+            <span class="song__item__singer"></span>
           </div>
         </a>
       </li>
     </template>
 
-    <main class="play-list">
-      <section class="song__info">
-        <img id="user-image" class="song__image" src="" alt="عکس آهنگ" />
-
-        <h1 id="name" class="song__name"></h1>
-
-        <h3 id="username" class="song__singer"></h3>
-        <div class="song__actions">
-          <button
-            id="popup-btn"
-            class="button--icon"
-            data-label="ایجاد پلی لیست"
-          >
-            <svg>
-              <use xlink:href="../assets/image/sprite.svg#add" />
-            </svg>
-          </button>
-        </div>
-      </section>
-
-      <section class="song__item__list"></section>
-    </main>
+    <main></main>
 
     <footer class="footer">
       <div class="footer__social">
@@ -179,30 +144,5 @@
         <img src="../assets/image/favicon.png" alt="" loading="lazy" />
       </a>
     </footer>
-
-    <div id="popup" class="modal__background">
-      <div class="popup">
-        <h2>ایجاد لیست جدید</h2>
-        <div id="name-playlist-field" class="form__field">
-          <input id="name-list" type="text" class="form__field__input" />
-          <label
-            for="name-list"
-            class="form__field__label form__field__label--inline"
-          >
-            نام لیست
-          </label>
-          <span class="form__field__status"></span>
-        </div>
-        <button
-          id="create-playlist"
-          class="button--icon"
-          data-label="ایجاد پلی لیست"
-        >
-          <svg>
-            <use xlink:href="../assets/image/sprite.svg#add" />
-          </svg>
-        </button>
-      </div>
-    </div>
   </body>
 </html>

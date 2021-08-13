@@ -51,10 +51,18 @@
       font-size: 1.3rem;
     }
 
-    &__duration {
-      margin-right: auto;
+  &__delete {
+    margin-right: auto;
 
-      font-size: 1.3rem;
+    & > svg {
+      width: 2rem;
+      height: 2rem;
+      transition: 0.1s all ease;
+      
+      &:hover {
+        transform: scale(1.1);
+        fill: red;
+      }
     }
   }
 
