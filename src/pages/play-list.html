@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
+    <link rel="stylesheet" href="../style/css/form.css" />
+    <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/nav.js" defer></script>
     <script src="../script/play-list.js" defer></script>
+    <script src="../script/form.js" defer></script>
     <title>علاقه مندی هام |‌ آهنگیفای</title>
   </head>
 
@@ -80,6 +83,13 @@
       </ul>
     </nav>
 
+    <template id="play-list-item">
+      <details>
+        <summary></summary>
+        <ul class="song__item__list"></ul>
+      </details>
+    </template>
+
     <template id="song-item">
       <li>
         <a href="./song.html" class="song__item">
@@ -88,15 +98,36 @@
             <h3 class="song__item__name"></h3>
             <div class="song__item__singer"></div>
           </div>
-          <div class="song__item__duration"></div>
+          <div class="song__item__delete">
+            <svg id="delete-song">
+              <use xlink:href="../assets/image/sprite.svg#delete" />
+            </svg>
+          </div>
         </a>
       </li>
     </template>
 
     <main class="play-list">
-      <h1 class="play-list__title">آهنگ های مورد علاقه</h1>
+      <section class="song__info">
+        <img id="user-image" class="song__image" src="" alt="عکس آهنگ" />
 
-      <ul class="song__item__list"></ul>
+        <h1 id="name" class="song__name"></h1>
+
+        <h3 id="username" class="song__singer"></h3>
+        <div class="song__actions">
+          <button
+            id="popup-btn"
+            class="button--icon"
+            data-label="ایجاد پلی لیست"
+          >
+            <svg>
+              <use xlink:href="../assets/image/sprite.svg#add" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="song__item__list"></section>
     </main>
 
     <footer class="footer">
@@ -148,5 +179,30 @@
         <img src="../assets/image/favicon.png" alt="" loading="lazy" />
       </a>
     </footer>
+
+    <div id="popup" class="modal__background">
+      <div class="popup">
+        <h2>ایجاد لیست جدید</h2>
+        <div id="name-playlist-field" class="form__field">
+          <input id="name-list" type="text" class="form__field__input" />
+          <label
+            for="name-list"
+            class="form__field__label form__field__label--inline"
+          >
+            نام لیست
+          </label>
+          <span class="form__field__status"></span>
+        </div>
+        <button
+          id="create-playlist"
+          class="button--icon"
+          data-label="ایجاد پلی لیست"
+        >
+          <svg>
+            <use xlink:href="../assets/image/sprite.svg#add" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
