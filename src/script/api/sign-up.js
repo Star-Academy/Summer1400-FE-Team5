@@ -54,7 +54,7 @@ form.addEventListener('submit', async e => {
       field: passwordField,
       rules: [
         {
-          valid: password.length > 8,
+          valid: password.length >= 8,
           message: 'کلمه عبور باید حداقل 8 کارکتر باشد'
         }
       ]
