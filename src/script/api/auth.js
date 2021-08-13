@@ -1,11 +1,10 @@
-const api = new Api();
-
 function resetStore() {
   localStorage.removeItem('id');
   localStorage.removeItem('user');
 }
 
 async function getUser(id) {
+  const api = Api.getApi();
   const res = await api.get(`/user/one/${id}`);
 
   if (res.status === 200) return res.body.user;
@@ -16,6 +15,7 @@ async function checkLoggedIn() {
   const token = localStorage.getItem('token');
 
   if (token) {
+    const api = Api.getApi();
     const res = await api.post('/user/auth', { token });
 
     if (res.status === 200) {
@@ -32,7 +32,7 @@ async function checkLoggedIn() {
 
   try {
     if (PROTECTED) window.location.replace('./login.html');
-  } catch { }
-  
+  } catch {}
+
   return false;
 }

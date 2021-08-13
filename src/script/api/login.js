@@ -33,7 +33,7 @@ form.addEventListener('submit', async e => {
 
   progress.classList.add('form__progress--loading');
 
-  const api = new Api();
+  const api = Api.getApi();
 
   const res = await api.post('/user/login', {
     email,

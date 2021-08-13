@@ -1,5 +1,12 @@
 class Api {
   baseUrl = 'https://songs.code-star.ir';
+  static api;
+
+  static getApi() {
+    if (!this.api) this.api = new Api();
+
+    return this.api;
+  }
 
   async get(path) {
     const res = await fetch(`${this.baseUrl}${path}`, {
