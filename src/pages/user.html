@@ -100,7 +100,7 @@
             accept=".jpg, .jpeg, .png"
           />
           <div class="form__update__container--input">
-            <div class="form__field">
+            <div id="firstname-field" class="form__field">
               <input
                 id="name"
                 name="first_name"
@@ -115,7 +115,7 @@
               </label>
               <span class="form__field__status"></span>
             </div>
-            <div id="email-field" class="form__field">
+            <div id="lastname-field" class="form__field">
               <input
                 id="last_name"
                 name="last_name"
@@ -134,14 +134,26 @@
         </section>
         <section class="form__update__container">
           <div class="form__update__container--radio">
-            <input type="radio" id="male" name="gender" value="true" />
+            <input
+              class="form__field__input"
+              type="radio"
+              id="male"
+              name="gender"
+              value="true"
+            />
             <label for="male">پسر</label>
           </div>
           <div class="form__update__container--radio">
-            <input type="radio" id="female" name="gender" value="false" />
+            <input
+              class="form__field__input"
+              type="radio"
+              id="female"
+              name="gender"
+              value="false"
+            />
             <label for="female">دختر</label>
           </div>
-          <div class="form__field">
+          <div id="birthday-field" class="form__field">
             <input
               id="birthday"
               name="birthday"
@@ -177,7 +189,7 @@
           </div>
         </section>
         <section class="form__update__container">
-          <button id="submit" class="button">به روز رسانی</button>
+          <button id="submit" type="submit" class="button">به روز رسانی</button>
         </section>
       </form>
     </main>
