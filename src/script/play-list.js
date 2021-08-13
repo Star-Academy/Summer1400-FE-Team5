@@ -112,10 +112,4 @@ window.addEventListener('click', e => {
   if (e.target == popup) popup.style.display = 'none';
 });
 
-document.getElementById('delete-song').addEventListener('click',async () =>{
-  const res=await api.post('/playlist/remove-song',{
-    token,
-    playlistId:
-  })
-});
 initPage();
