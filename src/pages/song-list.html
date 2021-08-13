@@ -10,97 +10,99 @@
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/song-list.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
-    <script src="../script/song-list.js" defer></script>
     <title>لیست آهنگ ها |‌ آهنگیفای</title>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
+    <script src="../script/api/song-list.js"></script>
+    <script src="../script/song-list.js" defer></script>
     <script src="../script/nav.js" defer></script>
   </head>
   <body>
-    <header class="header">
-      <nav class="nav">
-        <ul class="nav__link__box">
-          <li>
-            <a class="nav__link--home nav__link" href="./index.html">
-              <img src="../assets/image/favicon.png" alt="آهنگیفای" />
-              <span class="button--inline">آهنگیفای</span>
-            </a>
-          </li>
+    <nav class="nav">
+      <ul class="nav__link__box">
+        <li>
+          <a class="nav__link--home nav__link" href="./index.html">
+            <img src="../assets/image/favicon.png" alt="آهنگیفای" />
+            <span class="button--inline">آهنگیفای</span>
+          </a>
+        </li>
 
-          <li>
-            <a class="nav__link button--inline" href="./song-list.html">
-              آهنگ ها
-            </a>
-          </li>
-          <li>
-            <a class="nav__link button--inline" href="./play-list.html">
-              علاقه مندی ها
-            </a>
-          </li>
+        <li>
+          <a class="nav__link button--inline" href="./song-list.html">
+            آهنگ ها
+          </a>
+        </li>
+        <li>
+          <a class="nav__link button--inline" href="./play-list.html">
+            علاقه مندی ها
+          </a>
+        </li>
 
-          <li class="nav__auth__box">
-            <a class="nav__link button--inline" href="./sign-up.html">
-              ثبت نام
-            </a>
-            <a class="nav__link button--inline" href="./login.html">ورود</a>
-          </li>
+        <li class="nav__auth__box">
+          <a class="nav__link button--inline" href="./sign-up.html">
+            ثبت نام
+          </a>
+          <a class="nav__link button--inline" href="./login.html">ورود</a>
+        </li>
 
-          <li class="nav__user__box">
-            <a class="nav__user" href="./user.html">
-              <div class="nav__user__image"></div>
-              <div class="nav__user__name"></div>
-            </a>
+        <li class="nav__user__box">
+          <a class="nav__user" href="./user.html">
+            <div class="nav__user__image"></div>
+            <div class="nav__user__name"></div>
+          </a>
 
-            <button class="nav__logout">خروج</button>
-          </li>
-        </ul>
+          <button class="nav__logout">خروج</button>
+        </li>
+      </ul>
 
-        <input type="checkbox" name="toggle-menu" id="toggle-menu" />
-        <label for="toggle-menu" class="nav__menu__toggle">
-          <div></div>
-        </label>
+      <input type="checkbox" name="toggle-menu" id="toggle-menu" />
+      <label for="toggle-menu" class="nav__menu__toggle">
+        <div></div>
+      </label>
 
-        <div class="nav__menu__background"></div>
-        <ul class="nav__menu">
-          <li>
-            <a class="nav__link button--inline" href="./sign-up.html">
-              ثبت نام
-            </a>
-          </li>
-          <li>
-            <a class="nav__link button--inline" href="./login.html">ورود</a>
-          </li>
-          <li>
-            <a class="nav__link button--inline" href="./song-list.html">
-              آهنگ ها
-            </a>
-          </li>
-          <li>
-            <a class="nav__link button--inline" href="./play-list.html">
-              علاقه مندی ها
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <template id="music__item__template">
-      <a class="music__section__item" href="">
-        <img src="" alt="song cover" />
-        <span class="music__section__name"></span>
-        <span class="music__section__singer"></span>
-        <span class="music__section__duration"></span>
+      <div class="nav__menu__background"></div>
+      <ul class="nav__menu">
+        <li>
+          <a class="nav__link button--inline" href="./sign-up.html">
+            ثبت نام
+          </a>
+        </li>
+        <li>
+          <a class="nav__link button--inline" href="./login.html">ورود</a>
+        </li>
+        <li>
+          <a class="nav__link button--inline" href="./song-list.html">
+            آهنگ ها
+          </a>
+        </li>
+        <li>
+          <a class="nav__link button--inline" href="./play-list.html">
+            علاقه مندی ها
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <template id="song__item__template">
+      <a class="song__item" href="./song.html?id=">
+        <img class="song__item__image" src="" alt="song cover" />
+        <span class="song__item__name"></span>
+        <span class="song__item__singer"></span>
       </a>
     </template>
-    <template id="music__section__template">
-      <section class="music__section">
+
+    <template id="song__gener__template">
+      <section class="song__gener">
         <div>
-          <h2></h2>
-          <a class="button--inline" href="">نمایش همه</a>
+          <h2 class="song__gener__name"></h2>
+          <a class="song__gener__show-all button--inline" href="./song-gener.html?gener=">نمایش همه</a>
         </div>
-        <div class="music__section__container"></div>
+        <div class="song__gener__container"></div>
       </section>
     </template>
+
     <main></main>
+
     <footer class="footer">
       <div class="footer__social">
         <a href="http://youtube.com">
