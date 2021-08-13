@@ -81,15 +81,24 @@ main {
 
       color: #fff;
       background: linear-gradient(0deg, #000, 60%, transparent);
+
+      transition: all 0.3s ease;
     }
 
     &__name {
-      font-size: 2rem;
+      font-size: 2em;
       font-weight: 400;
     }
 
-    &__singer{
-      font-size: 1.3rem;
+    &__singer {
+      font-size: 1.3em;
+    }
+
+    &:hover &,
+    &:focus & {
+      &__info {
+        padding-bottom: 4rem;
+      }
     }
   }
 }
