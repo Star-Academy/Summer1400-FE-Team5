@@ -108,23 +108,14 @@
     </template>
 
     <main>
-      <section class="song__info">
-        <img id="user-image" class="song__image" src="" alt="عکس آهنگ" />
-
-        <h1 id="name" class="song__name"></h1>
-
-        <h3 id="username" class="song__singer"></h3>
-        <div class="song__actions">
-          <button
-            id="popup-btn"
-            class="button--icon"
-            data-label="ایجاد پلی لیست"
-          >
-            <svg>
-              <use xlink:href="../assets/image/sprite.svg#add" />
-            </svg>
-          </button>
-        </div>
+      <section class="user__info">
+        <div class="user__image"></div>
+        <h1 class="user__name"></h1>
+        <button class="button--icon" data-label="ایجاد پلی لیست">
+          <svg>
+            <use xlink:href="../assets/image/sprite.svg#add" />
+          </svg>
+        </button>
       </section>
 
       <section class="song__item__list"></section>
