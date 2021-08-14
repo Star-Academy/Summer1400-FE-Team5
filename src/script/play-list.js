@@ -24,7 +24,11 @@ async function initPage() {
     case 200:
       if (res.body) {
         res.body.forEach(playlist => {
-          addPlayList({ name: playlist.name, songs: playlist.songs });
+          addPlayList({
+            id: playlist.id,
+            name: playlist.name,
+            songs: playlist.songs
+          });
         });
       }
       break;
@@ -34,27 +38,52 @@ async function initPage() {
   }
 }
 
-function addPlayList({ name, songs }) {
+function addPlayList({ id, name, songs }) {
   const playlist = playListItem.content.cloneNode(true);
-  const summray = playlist.querySelector('summary');
+  const details = playlist.querySelector('details');
+  const divs = playlist.querySelector('summary').querySelectorAll('div');
+  const summray = divs[0];
+
+  const deletePlaylist = divs[1].querySelector('svg');
+  deletePlaylist.addEventListener('click', async () => {
+    const res = await api.post('/playlist/remove', {
+      token,
+      id
+    });
+
+    switch (res.status) {
+      case 200:
+        details.style.display = 'none';
+        break;
+      case 500:
+        alert('server error');
+        break;
+    }
+  });
+
   summray.textContent = name;
   const ul = playlist.querySelector('ul');
 
   songs.forEach(song => {
     ul.appendChild(
-      createSong({
-        id: song.rest.id,
-        name: song.rest.name,
-        singer: song.rest.artist,
-        cover: song.rest.cover
-      })
+      createSong(
+        {
+          id: song.rest.id,
+          name: song.rest.name,
+          singer: song.rest.artist,
+          cover: song.rest.cover
+        },
+        id
+      )
     );
   });
   playListList.appendChild(playlist);
 }
 
-function createSong({ id, name, singer, cover }) {
+function createSong({ id, name, singer, cover }, idPlaylist) {
   const song = songItemTemplate.content.cloneNode(true);
+
+  const li = song.querySelector('li');
 
   const a = song.querySelector('a');
   a.href = `./song.html?id=${id}`;
@@ -65,6 +94,33 @@ function createSong({ id, name, singer, cover }) {
 
   a.querySelector('.song__item__name').innerText = name;
   a.querySelector('.song__item__singer').innerText = singer;
+
+  const delete_svg = song.querySelector('svg');
+  delete_svg.addEventListener('click', async e => {
+    const res = await api.post('/playlist/remove-song', {
+      token,
+      playlistId: idPlaylist,
+      songId: id
+    });
+
+    switch (res.status) {
+      case 200:
+        li.style.display = 'none';
+        break;
+      case 400:
+        alert('bad req');
+        break;
+      case 401:
+        window.location.replace('./user.html');
+        break;
+      case 404:
+        alert('song didnt find');
+        break;
+      case 500:
+        alert('server error');
+        break;
+    }
+  });
 
   return song;
 }
@@ -95,8 +151,8 @@ document
       name: namePlaylist
     });
     switch (res.status) {
-      case 200:
-        window.location.replace('./play-list.html');
+      case 201:
+        location.reload();
         break;
       case 400:
         alert('bad req');

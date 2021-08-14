@@ -2,6 +2,11 @@
 @use 'util/mixins';
 @use 'util/media';
 
+html,
+body {
+  background: #eeeeee !important;
+}
+
 main {
   margin-top: 8rem !important;
   padding-bottom: 5rem;
@@ -154,7 +159,10 @@ details {
 
 summary {
   padding: 1rem;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   padding-left: 2.2rem;
   position: relative;
   cursor: pointer;
@@ -172,5 +180,19 @@ summary {
     transform: rotate(0);
     transform-origin: 0.2rem 50%;
     transition: 0.25s transform ease;
+  }
+}
+
+.delete-song-container {
+  & > svg {
+    width: 2rem;
+    height: 2rem;
+
+    transition: 0.2s all ease;
+
+    &:hover {
+      transform: scale(1.1);
+      fill: red;
+    }
   }
 }

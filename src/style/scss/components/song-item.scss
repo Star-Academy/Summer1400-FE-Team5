@@ -14,6 +14,10 @@
       list-style: none;
 
       li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         margin: 2rem 0;
         padding: 1rem;
 
@@ -52,12 +56,15 @@
     }
 
     &__delete {
-      margin-right: auto;
+      margin: auto auto auto 0;
+      width: 2rem;
+      height: 2rem;
 
       & > svg {
-        width: 2rem;
-        height: 2rem;
+        width: 100%;
+        height: 100%;
         transition: 0.1s all ease;
+        cursor: pointer;
 
         &:hover {
           transform: scale(1.1);

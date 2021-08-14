@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
-    <link rel="stylesheet" href="../style/css/components/form-field.css" />
+    <link rel="stylesheet" href="../style/css/form.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
     <script src="../script/api/index.js"></script>
@@ -85,29 +85,36 @@
 
     <template id="play-list-item">
       <details>
-        <summary></summary>
+        <summary>
+          <div></div>
+          <div class="delete-song-container">
+            <svg class="delete-song">
+              <use xlink:href="../assets/image/sprite.svg#delete" />
+            </svg>
+          </div>
+        </summary>
         <ul class="song__item__list"></ul>
       </details>
     </template>
 
     <template id="song-item">
-      <li>
+      <li class="li-song-item">
         <a href="./song.html" class="song__item">
           <img class="song__item__image" src="" alt="" />
           <div>
             <h3 class="song__item__name"></h3>
             <div class="song__item__singer"></div>
           </div>
-          <div class="song__item__delete">
-            <svg id="delete-song">
-              <use xlink:href="../assets/image/sprite.svg#delete" />
-            </svg>
-          </div>
         </a>
+        <div class="song__item__delete">
+          <svg class="delete-song">
+            <use xlink:href="../assets/image/sprite.svg#delete" />
+          </svg>
+        </div>
       </li>
     </template>
 
-    <main>
+    <main class="play-list">
       <section class="song__info">
         <img id="user-image" class="song__image" src="" alt="عکس آهنگ" />
 
