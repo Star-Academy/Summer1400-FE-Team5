@@ -4,22 +4,31 @@ const playListItem = document.querySelector('template#play-list-item');
 const playListList = document.querySelector('section.song__item__list');
 const api = Api.getApi();
 
-async function initPage() {
+async function addUserInfo() {
   let user;
+
   while (!user) {
     user = JSON.parse(localStorage.getItem('user'));
     await new Promise((res, rej) => {
       setTimeout(res, 100);
     });
   }
-  document.getElementById('name').textContent =
-    user.first_name + ' ' + user.last_name;
-  document.getElementById('username').textContent = user.username;
-  document.getElementById('user-image').src = user.avatar;
-  token = localStorage.getItem('token');
+
+  const userImg = document.querySelector('.user__image');
+  const userName = document.querySelector('.user__name');
+
+  userName.innerText = `${user.first_name} ${user.last_name}`;
+  if (user.avatar) userImg.style.backgroundImage = user.avatar;
+  else userImg.innerText = user.first_name[0];
+}
+
+async function initPage() {
+  addUserInfo();
+
   const res = await api.post('​/playlist/all', {
-    token
+    token: localStorage.getItem('token')
   });
+
   switch (res.status) {
     case 200:
       if (res.body) {
@@ -124,12 +133,13 @@ function createSong({ id, name, singer, cover }, idPlaylist) {
 
   return song;
 }
-document.getElementById('popup-btn').addEventListener('click', e => {
+document.getElementById('add-to-play-list').addEventListener('click', () => {
   popup.style.display = 'flex';
 });
+
 document
   .getElementById('create-playlist')
-  .addEventListener('click', async e => {
+  .addEventListener('click', async () => {
     const namePlaylistFeild = document.getElementById('name-playlist-field');
     const namePlaylist = namePlaylistFeild.children[0].value;
     const isValid = validate([
@@ -150,6 +160,7 @@ document
       token: localStorage.getItem('token'),
       name: namePlaylist
     });
+
     switch (res.status) {
       case 201:
         location.reload();

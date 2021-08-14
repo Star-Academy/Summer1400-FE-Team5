@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'util/var';
 @use 'util/mixins';
 @use 'util/media';
@@ -15,98 +16,46 @@ main {
   @include mixins.round-section();
 }
 
-.song {
+.user {
   $image-size: 15rem;
 
   &__info {
-    display: grid;
-    grid-template-columns: min-content 1fr max-content;
-    grid-template-rows: 1fr repeat(3, min-content);
-    grid-template-areas:
-      'image . .'
-      'image name actions'
-      'image singer .'
-      'image follow .';
-
-    gap: 0 2rem;
+    display: flex;
     padding: 0 4rem;
+    align-items: center;
 
-    transform: translateY(-6.9rem);
+    transform: translateY(-50%);
 
     @include media.query(phone) {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        'image'
-        'name'
-        'singer'
-        'follow'
-        'actions';
-
-      justify-items: center;
+      transform: translateY(#{math.div(-$image-size, 2)});
+      flex-direction: column;
     }
   }
 
   &__image {
-    display: block;
+    display: flex;
     width: $image-size;
     height: $image-size;
-    grid-area: image;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
     box-shadow: 1px 5px 12px #00000052;
     overflow: hidden;
-    object-fit: cover;
+
+    color: #fff;
+    background-color: var.$color-primary;
+    font-size: 5rem;
   }
 
   &__name {
-    display: flex;
-    align-items: center;
-    grid-area: name;
+    margin: 0 2rem 0 auto;
 
     font-size: 3rem;
     font-weight: 400;
 
-    & > small {
-      padding: 0.1rem 1rem;
-      margin-right: 1rem;
-
-      border-radius: 1rem;
-      border: 1px solid var.$color-primary;
-      font-size: 1.3rem;
-    }
-  }
-
-  &__singer {
-    grid-area: singer;
-
-    font-size: 1.7rem;
-    font-weight: 400;
-  }
-
-  &__follow {
-    margin-top: 1rem;
-    grid-area: follow;
-    justify-self: start;
-
-    font-size: 1rem;
-
     @include media.query(phone) {
-      justify-self: center;
-      margin: 1rem 0px;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    grid-area: actions;
-    align-self: end;
-
-    & > button {
-      margin-left: 1rem;
-
-      &:last-child {
-        margin-left: 0;
-      }
+      margin: 1rem 0;
     }
   }
 }
