@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
-    <link rel="icon" href="../assets/image/favicon.png" />
+    <link rel="icon" href="../assets/image/favicon.ico" />
+    <script src="../script/play-list.js" defer></script>
     <title>علاقه مندی هام |‌ آهنگیفای</title>
   </head>
 
@@ -65,81 +66,23 @@
       </ul>
     </nav>
 
+    <template id="song-item">
+      <li>
+        <a href="./song.html" class="song__item">
+          <img class="song__item__image" src="" alt="" />
+          <div>
+            <h3 class="song__item__name"></h3>
+            <div class="song__item__singer"></div>
+          </div>
+          <div class="song__item__duration"></div>
+        </a>
+      </li>
+    </template>
+
     <main class="play-list">
       <h1 class="play-list__title">آهنگ های مورد علاقه</h1>
 
-      <ul class="song__item__list">
-        <li>
-          <a href="./song.html?id=1" class="song__item">
-            <img
-              class="song__item__image"
-              src="https://picsum.photos/100"
-              alt="song 1"
-            />
-            <div>
-              <h3 class="song__item__name">محراب</h3>
-              <div class="song__item__singer">محمد اصفهانی</div>
-            </div>
-            <div class="song__item__duration">3:51</div>
-          </a>
-        </li>
-        <li>
-          <a href="./song.html?id=2" class="song__item">
-            <img
-              class="song__item__image"
-              src="https://picsum.photos/101"
-              alt="song 2"
-            />
-            <div>
-              <h3 class="song__item__name">شب یلدا</h3>
-              <div class="song__item__singer">محمد اصفهانی</div>
-            </div>
-            <div class="song__item__duration">4:45</div>
-          </a>
-        </li>
-        <li>
-          <a href="./song.html?id=3" class="song__item">
-            <img
-              class="song__item__image"
-              src="https://picsum.photos/102"
-              alt="song 3"
-            />
-            <div>
-              <h3 class="song__item__name">به اصفهان رو</h3>
-              <div class="song__item__singer">محمد اصفهانی</div>
-            </div>
-            <div class="song__item__duration">5:06</div>
-          </a>
-        </li>
-        <li>
-          <a href="./song.html?id=4" class="song__item">
-            <img
-              class="song__item__image"
-              src="https://picsum.photos/103"
-              alt="song 4"
-            />
-            <div>
-              <h3 class="song__item__name">بی قرار</h3>
-              <div class="song__item__singer">محمد اصفهانی</div>
-            </div>
-            <div class="song__item__duration">7:32</div>
-          </a>
-        </li>
-        <li>
-          <a href="./song.html?id=5" class="song__item">
-            <img
-              class="song__item__image"
-              src="https://picsum.photos/104"
-              alt="song 5"
-            />
-            <div>
-              <h3 class="song__item__name">ابد ولله ما ننسی حسینا</h3>
-              <div class="song__item__singer">محمد اصفهانی</div>
-            </div>
-            <div class="song__item__duration">4:12</div>
-          </a>
-        </li>
-      </ul>
+      <ul class="song__item__list"></ul>
     </main>
 
     <footer class="footer">
@@ -185,13 +128,6 @@
             />
           </svg>
         </a>
-      </div>
-
-      <div class="footer__link">
-        <a class="button--inline" href="./sign-up.html">ثبت نام</a>
-        <a class="button--inline" href="./login.html">ورود</a>
-        <a class="button--inline" href="./song-list.html">آهنگ ها</a>
-        <a class="button--inline" href="./play-list.html">علاقه مندی ها</a>
       </div>
 
       <a href="./">
