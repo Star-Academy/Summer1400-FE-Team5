@@ -2,19 +2,14 @@
 @use 'util/mixins';
 @use 'util/media';
 
-html,
-body {
-  background: #eeeeee !important;
-}
 main {
+  margin-top: 8rem !important;
   padding-bottom: 5rem;
+
+  overflow: visible !important;
+  @include mixins.round-section();
 }
 
-.play-list {
-  @include mixins.round-section();
-  overflow: visible !important;
-  margin-top: 5rem;
-}
 .song {
   $image-size: 15rem;
 
@@ -122,6 +117,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .popup {
   width: 50%;
   height: auto;
@@ -145,6 +141,15 @@ details {
   overflow: hidden;
   width: 100%;
   background-color: white;
+
+  &[open] > summary:before {
+    transform: rotate(90deg);
+  }
+
+  & > ul {
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+  }
 }
 
 summary {
@@ -155,26 +160,17 @@ summary {
   cursor: pointer;
   font-size: 2rem;
   color: black;
-}
 
-summary:before {
-  content: '';
-  border-width: 0.4rem;
-  border-style: solid;
-  border-color: transparent transparent transparent #fff;
-  position: absolute;
-  top: 1.3rem;
-  left: 1rem;
-  transform: rotate(0);
-  transform-origin: 0.2rem 50%;
-  transition: 0.25s transform ease;
-}
-
-details[open] > summary:before {
-  transform: rotate(90deg);
-}
-
-details > ul {
-  padding-bottom: 1rem;
-  margin-bottom: 0;
+  &:before {
+    content: '';
+    border-width: 0.4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: 0.2rem 50%;
+    transition: 0.25s transform ease;
+  }
 }

@@ -1,4 +1,4 @@
-const templateSongItem = document.getElementById('song__item__template');
+const templateSongItem = document.getElementById('song__unit__template');
 const templateSongGener = document.getElementById('song__gener__template');
 const main = document.querySelector('main');
 
@@ -7,13 +7,13 @@ const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
 function createSong({ id, name, artist, cover }) {
   const songNode = templateSongItem.content.cloneNode(true);
 
-  const img = songNode.querySelector('.song__item__image');
+  const img = songNode.querySelector('.song__unit__image');
   img.src = cover;
   img.alt = name;
 
-  songNode.querySelector('.song__item').href = `./song.html?id=${id}`;
-  songNode.querySelector('.song__item__name').innerText = name;
-  songNode.querySelector('.song__item__singer').innerText = artist;
+  songNode.querySelector('.song__unit').href = `./song.html?id=${id}`;
+  songNode.querySelector('.song__unit__name').innerText = name;
+  songNode.querySelector('.song__unit__singer').innerText = artist;
 
   return songNode;
 }
