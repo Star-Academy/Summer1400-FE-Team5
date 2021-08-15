@@ -1,3 +1,5 @@
+@use '../util/media';
+
 .popup {
   display: flex;
   position: fixed;
@@ -28,6 +30,10 @@
 
     background-color: #fff;
     border-radius: 2rem;
+
+    @include media.query(phone) {
+      min-width: 90%;
+    }
   }
 
   &__title {
