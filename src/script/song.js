@@ -2,9 +2,39 @@ const id = new URLSearchParams(window.location.search).get('id');
 const suggestionTemplate = document.querySelector('template#suggestion');
 const suggestionList = document.querySelector('.song__item__list');
 const playListField = document.getElementById('playlist-field');
+const audio = document.querySelector('audio');
+const palyPauseButton = document.getElementById('play_pause_switch');
 
 let playLists = [];
 const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
+
+async function loadSong(file) {
+  audio.src = file;
+  audio.load();
+
+  palyPauseButton.addEventListener('change', () => {
+    if (palyPauseButton.checked) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    palyPauseButton.checked = false;
+  });
+
+  document
+    .querySelector('button.audio__actions--next')
+    .addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
+    });
+  document
+    .querySelector('button.audio__actions--pervious')
+    .addEventListener('click', () => {
+      audio.currentTime = Math.max(audio.currentTime - 15, 0);
+    });
+}
 
 function renderSong({ name, artist, lyrics, file, cover }) {
   document.querySelector('.song__name').innerHTML = `${name}<small>${
@@ -13,7 +43,7 @@ function renderSong({ name, artist, lyrics, file, cover }) {
   document.querySelector('.song__singer').innerText = artist;
   document.querySelector('.song__image').src = cover;
   document.querySelector('.audio__info img').src = cover;
-  document.querySelector('audio').src = file;
+  loadSong(file);
   document.querySelector('.song__lyrics').innerHTML = `<li>${lyrics
     .split('\n')
     .join('</li><li>')}</li>`;

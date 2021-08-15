@@ -80,7 +80,7 @@
       width: 50%;
       height: 0.4rem;
       margin: 0 1rem;
-      
+
       & > span {
         margin-right: auto;
         width: 30%;
@@ -138,6 +138,11 @@
     }
     & > input[type='checkbox'] {
       display: none;
+
+      &:disabled ~ label {
+        background-color: #0f47ff;
+      }
+
       &:checked ~ label > svg:nth-child(1) {
         display: none;
       }
