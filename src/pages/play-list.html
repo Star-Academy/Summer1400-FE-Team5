@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="../style/css/components/form-field.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
+    <script>
+      const PROTECTED = true;
+    </script>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/nav.js" defer></script>
@@ -111,7 +114,11 @@
       <section class="user__info">
         <div class="user__image"></div>
         <h1 class="user__name"></h1>
-        <button id='add-to-play-list' class="button--icon" data-label="ایجاد پلی لیست">
+        <button
+          id="add-to-play-list"
+          class="button--icon"
+          data-label="ایجاد پلی لیست"
+        >
           <svg>
             <use xlink:href="../assets/image/sprite.svg#add" />
           </svg>
