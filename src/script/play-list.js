@@ -1,5 +1,4 @@
 const songItemTemplate = document.querySelector('template#song-item');
-const popup = document.getElementById('popup');
 const playListItem = document.querySelector('template#play-list-item');
 const playListList = document.querySelector('section.song__item__list');
 const api = Api.getApi();
@@ -37,6 +36,7 @@ async function initPage() {
         });
       }
       break;
+
     case 500:
       alert('server error');
       break;
@@ -77,15 +77,17 @@ function createSong({ id, name, singer, cover }) {
 
   return song;
 }
-document.getElementById('add-to-play-list').addEventListener('click', () => {
-  popup.style.display = 'flex';
-});
+
+document
+  .getElementById('add-to-play-list')
+  .addEventListener('click', openPopup);
 
 document
   .getElementById('create-playlist')
   .addEventListener('click', async () => {
     const namePlaylistFeild = document.getElementById('name-playlist-field');
     const namePlaylist = namePlaylistFeild.children[0].value;
+
     const isValid = validate([
       {
         field: namePlaylistFeild,
@@ -99,11 +101,14 @@ document
     ]);
 
     if (!isValid) return;
-    popup.style.display = 'none';
+
+    closePopup();
+
     const res = await api.post('/playlist/create', {
       token: localStorage.getItem('token'),
       name: namePlaylist
     });
+
     switch (res.status) {
       case 200:
         window.location.reload();
@@ -117,9 +122,5 @@ document
         alert('server error');
     }
   });
-
-window.addEventListener('click', e => {
-  if (e.target == popup) popup.style.display = 'none';
-});
 
 initPage();
