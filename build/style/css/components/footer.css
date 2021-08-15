@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  padding: 4rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3rem;
+  border-radius: 3rem;
+  background-color: #444;
+  box-shadow: 0 0 4rem #00000033;
+  overflow: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer {
+    margin: 1.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .footer {
+    flex-direction: column-reverse;
+  }
+}
+.footer__social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__social a {
+  margin-left: 1rem;
+  text-decoration: none;
+}
+.footer__social a:hover svg {
+  fill: #2395ff;
+}
+.footer__social a svg {
+  width: 4rem;
+  height: 4rem;
+  transition: all 0.3s ease;
+}
+
+/*# sourceMappingURL=footer.css.map */
