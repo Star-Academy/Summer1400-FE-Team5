@@ -4,84 +4,110 @@ const suggestionList = document.querySelector('.song__item__list');
 const playListField = document.getElementById('playlist-field');
 const audio = document.querySelector('audio');
 const palyPauseButton = document.getElementById('play_pause_switch');
+const muteBtn = document.getElementById('audio__volume--mute');
+const timelineController = document.getElementById('timeline-controller');
+const volumeController = document.getElementById('volume-controller');
 
+let timeInvertal;
 let playLists = [];
 const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
 
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, '0');
+
+  const sec = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, '0');
+
+  return `${min}:${sec}`;
+}
+
+function changeTime() {
+  timeInvertal = setInterval(() => {
+    timelineController.value = (audio.currentTime / audio.duration) * 100;
+    timelineController.parentElement.setAttribute(
+      'data-current-time',
+      formatTime(audio.currentTime)
+    );
+
+    if (timelineController.value >= 100) clearInterval(timeInvertal);
+  }, 1000);
+
+  audio.currentTime = (timelineController.value / 100) * audio.duration;
+}
+
 async function loadSong(file) {
+  palyPauseButton.checked = false;
+
   audio.src = file;
   audio.load();
-  palyPauseButton.checked = false;
-  const timelineController = document.getElementById('timeline-controller');
-  let idInvertal;
 
   audio.addEventListener('canplay', () => {
-    const duration =
-      Math.floor(audio.duration / 60) + ':' + Math.floor(audio.duration % 60);
-    document
-      .getElementById('timeline-controller')
-      .parentElement.setAttribute('data-duration', duration);
+    timelineController.parentElement.setAttribute(
+      'data-current-time',
+      formatTime(audio.currentTime)
+    );
+
+    timelineController.parentElement.setAttribute(
+      'data-duration',
+      formatTime(audio.duration)
+    );
   });
 
   palyPauseButton.addEventListener('change', () => {
     if (palyPauseButton.checked) {
-      idInvertal = setInterval(() => {
-        timelineController.value = parseInt(timelineController.value) + 1;
-        console.log(timelineController.value);
-        if (timelineController.value == 100) clearInterval(idInvertal);
-      }, audio.duration * 10);
-
-      audio.currentTime = (timelineController.value / 100) * audio.duration;
+      changeTime();
       audio.play();
     } else {
       audio.pause();
-      clearInterval(idInvertal);
+      clearInterval(timeInvertal);
     }
-  });
-
-  timelineController.addEventListener('click', () => {
-    clearInterval(idInvertal);
-  });
-  timelineController.addEventListener('change', () => {
-    audio.currentTime = audio.duration * (timelineController.value / 100);
-    console.log('vlaue is ', timelineController.value);
-    idInvertal = setInterval(() => {
-      timelineController.value = parseInt(timelineController.value) + 1;
-      console.log(timelineController.value);
-      if (timelineController.value == 100) clearInterval(idInvertal);
-    }, audio.duration * 10);
-  });
-
-  const volumeController = document.getElementById('volume-controller');
-  volumeController.addEventListener('change', () => {
-    audio.volume = volumeController.value / 100;
   });
 
   audio.addEventListener('ended', () => {
     palyPauseButton.checked = false;
   });
+}
+
+function initTimeController() {
+  timelineController.addEventListener('click', () => {
+    clearInterval(timeInvertal);
+  });
+
+  timelineController.addEventListener('change', changeTime);
 
   document
     .querySelector('button.audio__actions--next')
     .addEventListener('click', () => {
       audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
     });
+
   document
     .querySelector('button.audio__actions--pervious')
     .addEventListener('click', () => {
       audio.currentTime = Math.max(audio.currentTime - 15, 0);
     });
-  document
-    .getElementById('audio__volume--mute')
-    .addEventListener('change', () => {
-      if (document.getElementById('audio__volume--mute').checked) {
-        audio.volume = 0;
-        volumeController.value = 0;
-      } else {
-        audio.volume = 0.25;
-        volumeController.value = 25;
-      }
-    });
+}
+
+function initVolumeController() {
+  audio.volume = 0.25;
+  volumeController.value = 25;
+
+  volumeController.addEventListener('change', () => {
+    audio.volume = volumeController.value / 100;
+  });
+
+  muteBtn.addEventListener('change', () => {
+    if (muteBtn.checked) {
+      audio.volume = 0;
+      volumeController.value = 0;
+    } else {
+      audio.volume = 0.25;
+      volumeController.value = 25;
+    }
+  });
 }
 
 function renderSong({ name, artist, lyrics, file, cover }) {
@@ -91,12 +117,11 @@ function renderSong({ name, artist, lyrics, file, cover }) {
   document.querySelector('.song__singer').innerText = artist;
   document.querySelector('.song__image').src = cover;
   document.querySelector('.audio__info img').src = cover;
-  loadSong(file);
   document.querySelector('.song__lyrics').innerHTML = `<li>${lyrics
     .split('\n')
     .join('</li><li>')}</li>`;
-  audio.volume = 0.25;
-  volumeController.value = 25;
+
+  loadSong(file);
 }
 
 function addSuggestion({ id, name, artist, cover, duration }) {
@@ -145,6 +170,9 @@ document.getElementById('add-playlist').addEventListener('click', async () => {
     file: song.file,
     cover: song.cover
   });
+
+  initVolumeController();
+  initTimeController();
 })();
 
 (async () => {

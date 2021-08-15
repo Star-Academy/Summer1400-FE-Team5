@@ -198,7 +198,7 @@
       cursor: default;
     }
     &::after {
-      content: '0:0';
+      content: attr(data-current-time);
     }
     &::before {
       content: attr(data-duration);
