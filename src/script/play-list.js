@@ -45,8 +45,8 @@ async function initPage() {
 
 function addPlayList({ name, songs }) {
   const playlist = playListItem.content.cloneNode(true);
-  const summray = playlist.querySelector('summary');
-  summray.textContent = name;
+
+  playlist.querySelector('summary').textContent = name;
   const ul = playlist.querySelector('ul');
 
   songs.forEach(song => {
@@ -59,6 +59,7 @@ function addPlayList({ name, songs }) {
       })
     );
   });
+
   playListList.appendChild(playlist);
 }
 
@@ -110,14 +111,17 @@ document
     });
 
     switch (res.status) {
-      case 200:
-        window.location.reload();
+      case 201:
+        addPlayList({ name: namePlaylist, songs: [] });
         break;
+
       case 400:
         alert('bad req');
         break;
+
       case 401:
-        window.location.replace('./user.html');
+        window.location.replace('./login.html');
+
       case 500:
         alert('server error');
     }
