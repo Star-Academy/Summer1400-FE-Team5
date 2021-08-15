@@ -1,5 +1,4 @@
 const songItemTemplate = document.querySelector('template#song-item');
-const popup = document.getElementById('popup');
 const playListItem = document.querySelector('template#play-list-item');
 const playListList = document.querySelector('section.song__item__list');
 const api = Api.getApi();
@@ -41,6 +40,7 @@ async function initPage() {
         });
       }
       break;
+
     case 500:
       alert('server error');
       break;
@@ -71,6 +71,7 @@ function addPlayList({ id, name, songs }) {
   });
 
   summray.textContent = name;
+
   const ul = playlist.querySelector('ul');
 
   songs.forEach(song => {
@@ -86,6 +87,7 @@ function addPlayList({ id, name, songs }) {
       )
     );
   });
+
   playListList.appendChild(playlist);
 }
 
@@ -133,15 +135,17 @@ function createSong({ id, name, singer, cover }, idPlaylist) {
 
   return song;
 }
-document.getElementById('add-to-play-list').addEventListener('click', () => {
-  popup.style.display = 'flex';
-});
+
+document
+  .getElementById('add-to-play-list')
+  .addEventListener('click', openPopup);
 
 document
   .getElementById('create-playlist')
   .addEventListener('click', async () => {
     const namePlaylistFeild = document.getElementById('name-playlist-field');
     const namePlaylist = namePlaylistFeild.children[0].value;
+
     const isValid = validate([
       {
         field: namePlaylistFeild,
@@ -155,7 +159,9 @@ document
     ]);
 
     if (!isValid) return;
-    popup.style.display = 'none';
+
+    closePopup();
+
     const res = await api.post('/playlist/create', {
       token: localStorage.getItem('token'),
       name: namePlaylist
@@ -163,20 +169,19 @@ document
 
     switch (res.status) {
       case 201:
-        location.reload();
+        addPlayList({ name: namePlaylist, songs: [] });
         break;
+
       case 400:
         alert('bad req');
         break;
+
       case 401:
-        window.location.replace('./user.html');
+        window.location.replace('./login.html');
+
       case 500:
         alert('server error');
     }
   });
-
-window.addEventListener('click', e => {
-  if (e.target == popup) popup.style.display = 'none';
-});
 
 initPage();
