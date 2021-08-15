@@ -37,19 +37,22 @@ function addSuggestion({ id, name, artist, cover, duration }) {
 }
 
 document.getElementById('add-to-playlist').addEventListener('click', openPopup);
-document.getElementById('add-playlist').addEventListener('click', () => {
+document.getElementById('add-playlist').addEventListener('click', async () => {
   const playlist = playLists.filter(
     playlist => playlist.name === playListField.children[0].value
   )[0];
 
-  validate([
+  const valid = validate([
     {
       field: playListField,
       rules: [{ valid: playlist, message: 'فهرست پخش را به درستی انتخاب کنید' }]
     }
   ]);
 
-  addToPlayList(id, playlist.id);
+  if (valid) {
+    await addToPlayList(id, playlist.id);
+    closePopup();
+  }
 });
 
 (async () => {
@@ -70,6 +73,6 @@ document.getElementById('add-playlist').addEventListener('click', () => {
   const datalist = document.getElementById('playlists-data');
 
   playLists.forEach(playlist => {
-    datalist.innerHTML += `<option value=${playlist.name}></option>`;
+    datalist.innerHTML += `<option value="${playlist.name}"></option>`;
   });
 })();
