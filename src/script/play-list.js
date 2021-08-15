@@ -15,9 +15,11 @@ async function addUserInfo() {
 
   const userImg = document.querySelector('.user__image');
   const userName = document.querySelector('.user__name');
+  console.log(user.avatar);
+  console.log(userImg);
 
   userName.innerText = `${user.first_name} ${user.last_name}`;
-  if (user.avatar) userImg.style.backgroundImage = user.avatar;
+  if (user.avatar) userImg.style.backgroundImage = `url(${user.avatar})`;
   else userImg.innerText = user.first_name[0];
 }
 
@@ -56,7 +58,7 @@ function addPlayList({ id, name, songs }) {
   const deletePlaylist = divs[1].querySelector('svg');
   deletePlaylist.addEventListener('click', async () => {
     const res = await api.post('/playlist/remove', {
-      token,
+      token: localStorage.getItem('token'),
       id
     });
 
@@ -109,7 +111,7 @@ function createSong({ id, name, singer, cover }, idPlaylist) {
   const delete_svg = song.querySelector('svg');
   delete_svg.addEventListener('click', async e => {
     const res = await api.post('/playlist/remove-song', {
-      token,
+      token: localStorage.getItem('token'),
       playlistId: idPlaylist,
       songId: id
     });
