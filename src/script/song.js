@@ -1,7 +1,9 @@
 const id = new URLSearchParams(window.location.search).get('id');
 const suggestionTemplate = document.querySelector('template#suggestion');
 const suggestionList = document.querySelector('.song__item__list');
+const playListField = document.getElementById('playlist-field');
 
+let playLists = [];
 const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
 
 function renderSong({ name, artist, lyrics, file, cover }) {
@@ -34,13 +36,21 @@ function addSuggestion({ id, name, artist, cover, duration }) {
   suggestionList.appendChild(song);
 }
 
-function addToPlayList() {
-  console.log(`add ${id} to playList`);
-}
+document.getElementById('add-to-playlist').addEventListener('click', openPopup);
+document.getElementById('add-playlist').addEventListener('click', () => {
+  const playlist = playLists.filter(
+    playlist => playlist.name === playListField.children[0].value
+  )[0];
 
-document
-  .querySelector('#add-to-playlist')
-  .addEventListener('click', addToPlayList);
+  validate([
+    {
+      field: playListField,
+      rules: [{ valid: playlist, message: 'فهرست پخش را به درستی انتخاب کنید' }]
+    }
+  ]);
+
+  addToPlayList(id, playlist.id);
+});
 
 (async () => {
   const song = await getSong(id);
@@ -51,5 +61,15 @@ document
     lyrics: song.lyrics,
     file: song.file,
     cover: song.cover
+  });
+})();
+
+(async () => {
+  playLists = await getPlayListsName();
+
+  const datalist = document.getElementById('playlists-data');
+
+  playLists.forEach(playlist => {
+    datalist.innerHTML += `<option value=${playlist.name}></option>`;
   });
 })();

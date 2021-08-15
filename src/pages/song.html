@@ -9,13 +9,17 @@
     <link rel="stylesheet" href="../style/css/song.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
+    <link rel="stylesheet" href="../style/css/components/popup.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/song-item.css" />
+    <link rel="stylesheet" href="../style/css/components/form-field.css" />
     <link rel="stylesheet" href="../style/css/components/audio.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/api/song.js"></script>
+    <script src="../script/popup.js" defer></script>
+    <script src="../script/form.js" defer></script>
     <script src="../script/nav.js" defer></script>
     <script src="../script/song.js" defer></script>
   </head>
@@ -263,5 +267,31 @@
         <img src="../assets/image/favicon.png" alt="" loading="lazy" />
       </a>
     </footer>
+
+    <div class="popup">
+      <div class="popup__content">
+        <h2 class="popup__title">افزودن به فهرست پخش</h2>
+
+        <div id="playlist-field" class="form__field">
+          <input
+            id="playlist"
+            type="text"
+            class="form__field__input"
+            list="playlists-data"
+          />
+          <label
+            for="playlist"
+            class="form__field__label form__field__label--inline"
+          >
+            فهرست پخش
+          </label>
+          <datalist id="playlists-data"></datalist>
+
+          <span class="form__field__status"></span>
+        </div>
+
+        <button id="add-playlist" class="button">افزودن</button>
+      </div>
+    </div>
   </body>
 </html>
