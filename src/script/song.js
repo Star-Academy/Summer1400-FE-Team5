@@ -11,13 +11,50 @@ const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
 async function loadSong(file) {
   audio.src = file;
   audio.load();
+  palyPauseButton.checked = false;
+  const timelineController = document.getElementById('timeline-controller');
+  let idInvertal;
+
+  audio.addEventListener('canplay', () => {
+    const duration =
+      Math.floor(audio.duration / 60) + ':' + Math.floor(audio.duration % 60);
+    document
+      .getElementById('timeline-controller')
+      .parentElement.setAttribute('data-duration', duration);
+  });
 
   palyPauseButton.addEventListener('change', () => {
     if (palyPauseButton.checked) {
+      idInvertal = setInterval(() => {
+        timelineController.value = parseInt(timelineController.value) + 1;
+        console.log(timelineController.value);
+        if (timelineController.value == 100) clearInterval(idInvertal);
+      }, audio.duration * 10);
+
+      audio.currentTime = (timelineController.value / 100) * audio.duration;
       audio.play();
     } else {
       audio.pause();
+      clearInterval(idInvertal);
     }
+  });
+
+  timelineController.addEventListener('click', () => {
+    clearInterval(idInvertal);
+  });
+  timelineController.addEventListener('change', () => {
+    audio.currentTime = audio.duration * (timelineController.value / 100);
+    console.log('vlaue is ', timelineController.value);
+    idInvertal = setInterval(() => {
+      timelineController.value = parseInt(timelineController.value) + 1;
+      console.log(timelineController.value);
+      if (timelineController.value == 100) clearInterval(idInvertal);
+    }, audio.duration * 10);
+  });
+
+  const volumeController = document.getElementById('volume-controller');
+  volumeController.addEventListener('change', () => {
+    audio.volume = volumeController.value / 100;
   });
 
   audio.addEventListener('ended', () => {
@@ -34,6 +71,17 @@ async function loadSong(file) {
     .addEventListener('click', () => {
       audio.currentTime = Math.max(audio.currentTime - 15, 0);
     });
+  document
+    .getElementById('audio__volume--mute')
+    .addEventListener('change', () => {
+      if (document.getElementById('audio__volume--mute').checked) {
+        audio.volume = 0;
+        volumeController.value = 0;
+      } else {
+        audio.volume = 0.25;
+        volumeController.value = 25;
+      }
+    });
 }
 
 function renderSong({ name, artist, lyrics, file, cover }) {
@@ -47,6 +95,8 @@ function renderSong({ name, artist, lyrics, file, cover }) {
   document.querySelector('.song__lyrics').innerHTML = `<li>${lyrics
     .split('\n')
     .join('</li><li>')}</li>`;
+  audio.volume = 0.25;
+  volumeController.value = 25;
 }
 
 function addSuggestion({ id, name, artist, cover, duration }) {

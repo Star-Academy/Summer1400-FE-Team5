@@ -51,9 +51,11 @@
       cursor: pointer;
       & > input[type='checkbox'] {
         display: none;
+
         &:checked ~ label > svg:nth-child(1) {
           display: block;
         }
+
         &:checked ~ label > svg:nth-child(2) {
           display: none;
         }
@@ -81,22 +83,15 @@
       height: 0.4rem;
       margin: 0 1rem;
 
-      & > span {
+      & > input {
         margin-right: auto;
-        width: 30%;
+        width: 100%;
         background-color: black;
         display: flex;
         justify-content: start;
         align-items: center;
-        &:hover {
-          &::after {
-            content: '';
-            width: 1rem;
-            height: 1rem;
-            background-color: black;
-            border-radius: 50%;
-          }
-        }
+        direction: ltr !important;
+        cursor: pointer;
       }
     }
   }
@@ -139,10 +134,6 @@
     & > input[type='checkbox'] {
       display: none;
 
-      &:disabled ~ label {
-        background-color: #0f47ff;
-      }
-
       &:checked ~ label > svg:nth-child(1) {
         display: none;
       }
@@ -164,12 +155,7 @@
     justify-content: end;
     align-items: center;
     height: 11rem;
-    & > input[type='checkbox'] {
-      display: none;
-      &:checked ~ label > svg {
-        fill: red !important;
-      }
-    }
+
     & > img {
       display: block;
       width: 100%;
@@ -204,7 +190,6 @@
     }
     &::after,
     &::before {
-      content: '0:0';
       font-size: 2rem;
       color: black;
       background-color: #fff;
@@ -212,23 +197,23 @@
       z-index: 10;
       cursor: default;
     }
-    & > span {
+    &::after {
+      content: '0:0';
+    }
+    &::before {
+      content: attr(data-duration);
+    }
+
+    & > input {
       background-color: black;
-      width: 50%;
+      width: 100%;
       height: 100%;
       margin-right: auto;
       display: flex;
       justify-content: start;
       align-items: center;
-      &:hover {
-        &::after {
-          content: '';
-          width: 1rem;
-          height: 1rem;
-          background-color: black;
-          border-radius: 50%;
-        }
-      }
+      direction: ltr !important;
+      cursor: pointer;
     }
   }
 }
