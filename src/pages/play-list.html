@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style/css/main.css" />
     <link rel="stylesheet" href="../style/css/play-list.css" />
     <link rel="stylesheet" href="../style/css/components/song-item.css" />
+    <link rel="stylesheet" href="../style/css/components/popup.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
@@ -19,6 +20,7 @@
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/nav.js" defer></script>
+    <script src="../script/popup.js" defer></script>
     <script src="../script/play-list.js" defer></script>
     <script src="../script/form.js" defer></script>
     <title>علاقه مندی هام |‌ آهنگیفای</title>
@@ -178,9 +180,10 @@
       </a>
     </footer>
 
-    <div id="popup" class="modal__background">
-      <div class="popup">
-        <h2>ایجاد لیست جدید</h2>
+    <div class="popup">
+      <div class="popup__content">
+        <h2 class="popup__title">ایجاد لیست جدید</h2>
+
         <div id="name-playlist-field" class="form__field">
           <input id="name-list" type="text" class="form__field__input" />
           <label
@@ -191,15 +194,8 @@
           </label>
           <span class="form__field__status"></span>
         </div>
-        <button
-          id="create-playlist"
-          class="button--icon"
-          data-label="ایجاد پلی لیست"
-        >
-          <svg>
-            <use xlink:href="../assets/image/sprite.svg#add" />
-          </svg>
-        </button>
+
+        <button id="create-playlist" class="button">ایجاد</button>
       </div>
     </div>
   </body>
