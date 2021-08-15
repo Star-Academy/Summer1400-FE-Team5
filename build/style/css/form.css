@@ -87,7 +87,7 @@ input:autofill {
 }
 
 body {
-  background: url("../../assets/image/background.jpg");
+  background: linear-gradient(45deg, #ffcf00, #ff8800);
   background-position: right;
   background-size: cover;
 }
@@ -106,9 +106,18 @@ main {
   width: 100%;
   max-width: 450px;
   border-radius: 2rem;
-  background-color: #dadfffbf;
+  background-color: #fff;
   backdrop-filter: blur(8px);
   box-shadow: 0 0.1rem 2rem 0.4rem #00000045;
+}
+.form__logo {
+  width: 10rem;
+  margin: 0.2rem auto;
+  display: block;
+}
+.form__logo > img {
+  padding-left: 2rem;
+  width: 100%;
 }
 .form__box {
   display: flex;
