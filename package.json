@@ -1,26 +1,41 @@
 {
-  "name": "summer1400-fe-team5",
-  "version": "1.0.0",
-  "description": "پروژه کارآموزی تابستان 1400 کد استار- با استفاده از برترین تکنولوژی های روز دنیا 😑",
-  "main": "index.js",
+  "name": "code-star-summer1400-team5",
+  "version": "0.0.0",
   "scripts": {
-    "scss:watch": "sass --watch src/style/scss:src/style/css",
-    "scss": "sass src/style/scss:src/style/css"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Star-Academy/Summer1400-FE-Team5.git"
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~12.2.0",
+    "@angular/cdk": "^12.2.2",
+    "@angular/common": "~12.2.0",
+    "@angular/compiler": "~12.2.0",
+    "@angular/core": "~12.2.0",
+    "@angular/forms": "~12.2.0",
+    "@angular/material": "^12.2.2",
+    "@angular/platform-browser": "~12.2.0",
+    "@angular/platform-browser-dynamic": "~12.2.0",
+    "@angular/router": "~12.2.0",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
   },
-  "keywords": [
-    "codeStar"
-  ],
-  "author": "ali salemmi - erfan ghorbani",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Star-Academy/Summer1400-FE-Team5/issues"
-  },
-  "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team5#readme",
   "devDependencies": {
-    "sass": "^1.36.0"
+    "@angular-devkit/build-angular": "~12.2.2",
+    "@angular/cli": "~12.2.2",
+    "@angular/compiler-cli": "~12.2.0",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.3.5"
   }
 }
