@@ -39,7 +39,19 @@ $code-star-summer1400-team5-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($code-star-summer1400-team5-theme);
 
-/* You can add global styles to this file, and also import other style files */
+// ----------------------------
+// Typography
+
+@font-face {
+  font-family: 'iransans';
+  src: url('../assets/font/iransans.ttf');
+}
+
+$typography: mat.define-typography-config(
+  $font-family: 'iransans'
+);
+
+@include mat.button-typography($typography);
 
 html,
 body {
@@ -48,5 +60,5 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'iransans', sans-serif;
 }
