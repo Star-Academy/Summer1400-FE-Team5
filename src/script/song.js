@@ -30,9 +30,7 @@ function addSuggestion({ id, name, artist, cover, duration }) {
   suggestionList.appendChild(song);
 }
 
-function addToPlayList() {
-  console.log(`add ${id} to playList`);
-}
+function addToPlayList() {}
 
 document
   .querySelector('#add-to-playlist')
