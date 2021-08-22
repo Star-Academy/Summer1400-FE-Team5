@@ -9,6 +9,7 @@ function loadSongList(songs) {
   gener_ind = 1;
   section = 0; //storing new section
   div = 0; //storing div container in section
+
   songs.forEach(song => {
     let id = song['id'];
     let cover = song['cover'];

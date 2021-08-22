@@ -1,51 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
     <title>ثبت نام | آهنگیفای</title>
-    <link rel="stylesheet" href="../style/css/main.css"></link>
-    <link rel="stylesheet" href="../style/css/form.css"></link>
-    <link rel="stylesheet" href="../style/css/components/button.css"></link>
-    <link rel="icon" href="../assets/image/logo-ahangify.png">
+    <link rel="stylesheet" href="../style/css/main.css" />
+    <link rel="stylesheet" href="../style/css/form.css" />
+    <link rel="stylesheet" href="../style/css/components/button.css" />
+    <link rel="icon" href="../assets/image/favicon.ico" />
     <script src="../script/form.js" defer></script>
-
   </head>
   <body>
     <main class="form__box">
       <form class="form">
+        <a class="form__logo" href="./index.html">
+          <img src="../assets/image/favicon.png" alt="logo" />
+        </a>
         <h1 class="form__title">ثبت نام</h1>
         <h3 class="form__subtitle">گذرگاه سرزمین رویا</h3>
 
         <div class="form__field">
-          <input id="email" type="email" class="form__field__input" autocomplete="email" />
+          <input
+            id="email"
+            type="email"
+            class="form__field__input"
+            autocomplete="email"
+          />
           <label
             for="email"
             class="form__field__label form__field__label--inline"
-          > ایمیل
+          >
+            ایمیل
           </label>
           <span class="form__field__status"></span>
         </div>
 
         <div class="form__field">
-          <input id="password" type="password" class="form__field__input" autocomplete="new-password" />
+          <input
+            id="password"
+            type="password"
+            class="form__field__input"
+            autocomplete="new-password"
+          />
           <label
             for="password"
             class="form__field__label form__field__label--inline"
-          > کلمه عبور
+          >
+            کلمه عبور
           </label>
           <span class="form__field__status"></span>
         </div>
 
         <div class="form__field">
-            <input id="repeat-password" type="password" class="form__field__input" autocomplete="new-password" />
-            <label
-              for="repeat-password"
-              class="form__field__label form__field__label--inline"
-            > تکرار کلمه عبور
-            </label>
-            <span class="form__field__status"></span>
-          </div>
+          <input
+            id="repeat-password"
+            type="password"
+            class="form__field__input"
+            autocomplete="new-password"
+          />
+          <label
+            for="repeat-password"
+            class="form__field__label form__field__label--inline"
+          >
+            تکرار کلمه عبور
+          </label>
+          <span class="form__field__status"></span>
+        </div>
 
         <a href="./login.html" class="button--inline">قبلا ثبت نام کردم...</a>
         <button type="submit" class="button">ثبت نام</button>
