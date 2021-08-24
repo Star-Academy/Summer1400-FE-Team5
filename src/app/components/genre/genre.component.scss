@@ -1,0 +1,34 @@
+@use 'src/scss/util/scrollbar' as util;
+
+.song__genre {
+  $song-gap: 0.75rem;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__name {
+    margin: 0 1.5rem 0 auto !important;
+
+    font-size: 3rem !important;
+    font-weight: 400 !important;
+  }
+
+  &__container {
+    display: flex;
+    margin: 0;
+    padding: 2rem $song-gap;
+
+    list-style: none;
+    overflow-x: auto;
+
+    @include util.scrollbar();
+  }
+
+  &__item {
+    margin: 0 $song-gap;
+    flex: 20rem 0 0;
+    height: 20rem;
+  }
+}

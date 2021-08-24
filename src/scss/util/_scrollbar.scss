@@ -1,0 +1,32 @@
+@mixin scrollbar() {
+  $width: 0.75rem;
+  $padding: 0.5rem;
+  $background: #babac0;
+
+  &::-webkit-scrollbar {
+    width: $width + 2 * $padding;
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0);
+
+    &-thumb {
+      border: $padding solid rgba(0, 0, 0, 0);
+      border-radius: 100px;
+      background-clip: padding-box;
+    }
+
+    &-button {
+      display: none;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    &-thumb {
+      background-color: $background;
+
+      &:active,
+      &:hover {
+        background-color: darken($color: $background, $amount: 5);
+      }
+    }
+  }
+}
