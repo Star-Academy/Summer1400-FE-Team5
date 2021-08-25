@@ -48,10 +48,10 @@ $code-star-summer1400-team5-theme: mat.define-light-theme(
 }
 
 $typography: mat.define-typography-config(
-  $font-family: 'iransans'
+  $font-family: '"iransans", sans-serif'
 );
 
-@include mat.button-typography($typography);
+@include mat.core($typography);
 
 html {
   font-size: 62.5%;
