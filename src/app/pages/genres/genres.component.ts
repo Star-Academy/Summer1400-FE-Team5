@@ -6,6 +6,7 @@ import { SongService } from 'src/app/song/song.service';
 @Component({
   selector: 'page-genres',
   templateUrl: './genres.component.html',
+  styleUrls: ['./genres.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GenresPage implements OnInit {
