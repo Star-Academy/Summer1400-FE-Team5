@@ -5,7 +5,8 @@ import { SongService } from 'src/app/song/song.service';
 
 @Component({
   selector: 'page-genres',
-  templateUrl: './genres.component.html'
+  templateUrl: './genres.component.html',
+  encapsulation: ViewEncapsulation.None
 })
 export class GenresPage implements OnInit {
   genres$: Observable<Genre[]> | null = null;
