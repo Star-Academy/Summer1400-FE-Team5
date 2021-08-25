@@ -1,0 +1,16 @@
+@use '~@angular/material' as mat;
+
+body {
+  background-color: #eee;
+}
+
+main {
+  margin: 2rem;
+  padding: 2rem;
+
+  border-radius: 3rem;
+  background-color: #fff;
+  overflow: hidden;
+
+  @include mat.elevation(8);
+}
