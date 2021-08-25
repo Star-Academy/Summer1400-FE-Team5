@@ -4,20 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمای کاربری | آهنگیفای</title>
     <link rel="stylesheet" href="../style/css/main.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
-    <link rel="stylesheet" href="../style/css/components/song-item.css" />
-    <link rel="stylesheet" href="../style/css/song-list.css" />
+    <link rel="stylesheet" href="../style/css/components/form-field.css" />
+    <link rel="stylesheet" href="../style/css/form.css" />
+    <link rel="stylesheet" href="../style/css/user.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
-    <title>لیست آهنگ ها |‌ آهنگیفای</title>
+    <script>
+      const PROTECTED = true;
+    </script>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
-    <script src="../script/api/song-list.js"></script>
-    <script src="../script/song-list.js" defer></script>
+    <script src="../script/form.js" defer></script>
     <script src="../script/nav.js" defer></script>
+    <script src="../script/user.js" defer></script>
   </head>
+
   <body>
     <nav class="nav">
       <ul class="nav__link__box">
@@ -40,9 +45,7 @@
         </li>
 
         <li class="nav__auth__box">
-          <a class="nav__link button--inline" href="./sign-up.html">
-            ثبت نام
-          </a>
+          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
         </li>
 
@@ -64,9 +67,7 @@
       <div class="nav__menu__background"></div>
       <ul class="nav__menu">
         <li>
-          <a class="nav__link button--inline" href="./sign-up.html">
-            ثبت نام
-          </a>
+          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
         </li>
         <li>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
@@ -84,34 +85,113 @@
       </ul>
     </nav>
 
-    <template id="song__unit__template">
-      <li class="song__unit__box">
-        <a class="song__unit" href="./song.html?id=">
-          <img class="song__unit__image" src="" alt="" loading="lazy" />
-          <div class="song__unit__info">
-            <h3 class="song__unit__name"></h3>
-            <span class="song__unit__singer"></span>
-          </div>
-        </a>
-      </li>
-    </template>
-
-    <template id="song__gener__template">
-      <section class="song__gener">
-        <div class="song__gener__header">
-          <h2 class="song__gener__name"></h2>
-          <a
-            class="song__gener__show-all button--inline"
-            href="./song-gener.html?gener="
+    <main class="main">
+      <form class="form__update" novalidate>
+        <section class="form__update__container">
+          <label
+            class="form__update__container--user-image"
+            for="avatar__input"
           >
-            نمایش همه
-          </a>
-        </div>
-        <ul class="song__gener__container"></ul>
-      </section>
-    </template>
-
-    <main></main>
+            <img id="avatar" src="../assets/image/user.svg" alt="user image" />
+          </label>
+          <input
+            type="file"
+            name="avatar"
+            id="avatar__input"
+            accept=".jpg, .jpeg, .png"
+          />
+          <div class="form__update__container--input">
+            <div id="firstname-field" class="form__field">
+              <input
+                id="name"
+                name="first_name"
+                type="text"
+                class="form__field__input"
+              />
+              <label
+                for="name"
+                class="form__field__label form__field__label--inline"
+              >
+                نام
+              </label>
+              <span class="form__field__status"></span>
+            </div>
+            <div id="lastname-field" class="form__field">
+              <input
+                id="last_name"
+                name="last_name"
+                type="text"
+                class="form__field__input"
+              />
+              <label
+                for="last_name"
+                class="form__field__label form__field__label--inline"
+              >
+                نام خانوادگی
+              </label>
+              <span class="form__field__status"></span>
+            </div>
+          </div>
+        </section>
+        <section class="form__update__container">
+          <div class="form__update__container--radio">
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              value="true"
+            />
+            <label for="male">پسر</label>
+          </div>
+          <div class="form__update__container--radio">
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="false"
+            />
+            <label for="female">دختر</label>
+          </div>
+          <div id="birthday-field" class="form__field form__field--not-empty">
+            <input
+              id="birthday"
+              name="birthday"
+              type="date"
+              class="form__field__input"
+            />
+            <label
+              for="birthday"
+              ,
+              id="label_birthday"
+              ,
+              class="form__field__label form__field__label--inline"
+            >
+              تاریخ تولد
+            </label>
+            <span class="form__field__status"></span>
+          </div>
+          <div id="password-field" class="form__field">
+            <input
+              name="new_password"
+              id="password"
+              type="password"
+              class="form__field__input"
+              autocomplete="current-password"
+            />
+            <label
+              for="password"
+              class="form__field__label form__field__label--inline"
+            >
+              کلمه عبور
+            </label>
+            <span class="form__field__status"></span>
+          </div>
+        </section>
+        <section class="form__update__container">
+          <button id="submit" type="submit" class="button">به روز رسانی</button>
+        </section>
+      </form>
+    </main>
 
     <footer class="footer">
       <div class="footer__social">

@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="../style/css/components/footer.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/song-item.css" />
-    <link rel="stylesheet" href="../style/css/song-list.css" />
+    <link rel="stylesheet" href="../style/css/song-gener.css" />
     <link rel="icon" href="../assets/image/favicon.ico" />
-    <title>لیست آهنگ ها |‌ آهنگیفای</title>
+    <title>آهنگ ها |‌ آهنگیفای</title>
     <script src="../script/api/index.js"></script>
     <script src="../script/api/auth.js"></script>
     <script src="../script/api/song-list.js"></script>
-    <script src="../script/song-list.js" defer></script>
+    <script src="../script/song-gener.js" defer></script>
     <script src="../script/nav.js" defer></script>
   </head>
   <body>
@@ -85,7 +85,7 @@
     </nav>
 
     <template id="song__unit__template">
-      <li class="song__unit__box">
+      <div class="song__unit__box">
         <a class="song__unit" href="./song.html?id=">
           <img class="song__unit__image" src="" alt="" loading="lazy" />
           <div class="song__unit__info">
@@ -93,25 +93,13 @@
             <span class="song__unit__singer"></span>
           </div>
         </a>
-      </li>
+      </div>
     </template>
 
-    <template id="song__gener__template">
-      <section class="song__gener">
-        <div class="song__gener__header">
-          <h2 class="song__gener__name"></h2>
-          <a
-            class="song__gener__show-all button--inline"
-            href="./song-gener.html?gener="
-          >
-            نمایش همه
-          </a>
-        </div>
-        <ul class="song__gener__container"></ul>
-      </section>
-    </template>
-
-    <main></main>
+    <main>
+      <h1 class="song__gener__name"></h1>
+      <section class="song__gener__box"></section>
+    </main>
 
     <footer class="footer">
       <div class="footer__social">

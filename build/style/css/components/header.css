@@ -33,6 +33,7 @@
 }
 .header > .nav {
   position: absolute;
+  width: calc(100% - 6rem);
 }
 .header__background {
   display: block;

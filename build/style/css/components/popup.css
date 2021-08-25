@@ -1,0 +1,41 @@
+.popup {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  justify-content: center;
+  align-items: center;
+  transition: backdrop-filter 0.3s ease;
+  overflow: hidden;
+}
+.popup--show {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px) brightness(0.6);
+}
+.popup__content {
+  display: flex;
+  padding: 1rem 2rem 2rem 2rem;
+  min-width: 40rem;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .popup__content {
+    min-width: 90%;
+  }
+}
+.popup__title {
+  margin-bottom: 1rem;
+  align-self: center;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.popup button {
+  align-self: flex-end;
+}
+
+/*# sourceMappingURL=popup.css.map */

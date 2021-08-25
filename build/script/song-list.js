@@ -1,118 +1,51 @@
-const musicItems = document.querySelectorAll('.music__section__item');
-function loadSongList(songs) {
-  let index = 0;
-  musicItems.forEach(musicItem => {
-    const image = musicItem.children[0];
-    const name = musicItem.children[1];
-    const singer = musicItem.children[2];
-    const duration = musicItem.children[3];
+const templateSongItem = document.getElementById('song__unit__template');
+const templateSongGener = document.getElementById('song__gener__template');
+const main = document.querySelector('main');
 
-    image.src = songs[index]['cover'];
-    name.textContent = songs[index]['name'];
-    singer.textContent = songs[index]['artist'];
-    duration.textContent =
-      Math.floor(Math.random() * 5) + 1 + ':' + Math.floor(Math.random() * 61);
-    index = (index + 1) % songs.length;
-  });
+const geners = ['پاپ', 'جاز', 'راک', 'سنتی'];
+
+function createSong({ id, name, artist, cover }) {
+  const songNode = templateSongItem.content.cloneNode(true);
+
+  const img = songNode.querySelector('.song__unit__image');
+  img.src = cover;
+  img.alt = name;
+
+  songNode.querySelector('.song__unit').href = `./song.html?id=${id}`;
+  songNode.querySelector('.song__unit__name').innerText = name;
+  songNode.querySelector('.song__unit__singer').innerText = artist;
+
+  return songNode;
 }
-loadSongList([
-  {
-    id: 1,
-    name: 'دنیای بی تو',
-    artist: 'علی لهراسبی',
-    lyrics:
-      'روزی چند لحظه به من فکر میکنی\r\nبا کدوم آهنگ میام توو خاطرت\r\nیه کمی نشون بده ناراحتی\r\nباشه حتی به دروغ توو ظاهرت\r\n\r\nروزی چند بار به روزای رفتمون\r\nتو نگاه میکنی و میخندی\r\nداری با کی با خودت بد میکنی\r\nداری با کی سَر من میجنگی\r\n\r\nدنیاروکه بی تو من اینجوری نمیخوام\r\nهرجا حرف تو باشه منم کوتاه نمیام\r\nشبایی و که نیستی بهونتو میگیرم\r\nتقاص این روزارو دارم تنهایی میدم\r\n\r\nچند تا شب بیدار نشستی تا طلوع\r\nچند تا دلشوره رو حس کردی برام\r\nاز ته دل آرزو کردی که من\r\nناخداگاه به تولدت بیام\r\nشده از دوست دارم گفتن من\r\nیه شبانه روزو خوابت نبره\r\nشده ثابت بکنی بهم یه بار\r\nکه توو قلب تو فقط یک نفره\r\n\r\nدنیاروکه بی تو من اینجوری نمیخوام\r\nهرجا حرف تو باشه منم کوتاه نمیام\r\nشبایی و که نیستی بهونتو میگیرم\r\nتقاص این روزارو دارم تنهایی میدم\r\n\r\nدنیاروکه بی تو من اینجوری نمیخوام\r\nهرجا حرف تو باشه منم کوتاه نمیام\r\nشبایی و که نیستی بهونتو میگیرم\r\nتقاص این روزارو دارم تنهایی میدم',
-    file: 'http://130.185.120.192:5000/files/songs/Ali-Lohrasbi-Donyaye-Bi-To.mp3',
-    cover:
-      'http://130.185.120.192:5000/files/covers/Ali-Lohrasbi-Donyaye-Bi-To.jpg',
-    publish_date: '2020-09-19T00:00:00.000Z'
-  },
-  {
-    id: 3,
-    name: 'چه شبایی',
-    artist: 'علی لهراسبی',
-    lyrics:
-      'چه شبایی با چه حالی قولتو دادم به قلبم\r\nجای تو خالی چه روزایی جایی تنهایی نرفتم\r\nبی خیالی کار هر روزمه عادت کرده قلبم\r\nتو بخندی دلت خوش باشه من هیچی نمیخوام\r\nدل ببندی به هرکی من که خوشبختیتو میخوام\r\nمن همینم گلم بد باشی ام خوبیتو میخوام\r\nعزیزم هنوزم پاره ی تن منی تو\r\nمن بمیرم نبینم رو به راه نیست زندگیتو\r\nمن که خستم نباشی زندگیم تمومه بی تو\r\n\r\nعاشق بشی کوری\r\nبد میشی مجبوری\r\nعشق اما نه زوری نمیشه هیچ جوری\r\nرفتی ولی عشقت پهلومه\r\nبا این که بغضت تو گلومه\r\nخوشبختی تو آرزومه\r\n\r\nتو بخندی دلت خوش باشه من هیچی نمیخوام\r\nدل ببندی به هرکی من که خوشبختیتو میخوام\r\nمن همینم گلم بد باشی ام خوبیتو میخوام\r\nعزیزم هنوزم پاره ی تن منی تو\r\nمن بمیرم نبینم رو به راه نیست زندگیتو\r\nمن که خستم نباشی زندگیم تمومه بی تو',
-    file: 'http://130.185.120.192:5000/files/songs/Ali-Lohrasbi-Che-Shabaei.mp3',
-    cover:
-      'http://130.185.120.192:5000/files/covers/Ali-Lohrasbi-Che-Shabaei.jpg',
-    publish_date: '2020-10-20T00:00:00.000Z'
-  },
-  {
-    id: 6,
-    name: 'وابستگی',
-    artist: 'علی لهراسبی',
-    lyrics:
-      'کی مثل من میسوزه و، چشم و چراغ خونته\r\nهم قد من که هیچی، کی نصفِ من دیوونته\r\nببخش اگه نبودم و، نفس کشیدم توو هوات\r\nجایی ندیدم تو رو که، یه شهر میمُردن برات\r\nنبودنِ تو تووی هر نفس، قلب منو آتیش زده\r\nبدون تو حالم بده، بدون تو حالم بده\r\nبه منی که یه عمره بی توام، هی ترسِ تنهایی نده\r\nبدون تو حالم بده، بدون تو حالم بده\r\nقبل از تو توو دنیای من، تصویر زیبایی نبود\r\nتعریفم از وابستگی، انقدر رویایی نبود\r\nمُردم ببینی عشقمو، چون زندگیم دیدن نداشت\r\nچیزی به جز تو ارزش، انقدر جنگیدن نداشت\r\nنبودنِ تو تووی هر نفس، قلب منو آتیش زده\r\nبدون تو حالم بده، بدون تو حالم بده\r\nبه منی که یه عمره بی توام، هی ترسِ تنهایی نده\r\nبدون تو حالم بده، بدون تو حالم بده',
-    file: 'https://assets.rjassets.com/static/mp3/ali-lohrasbi-vabastegi/9e132ce000b5787.mp3',
-    cover:
-      'https://assets.rjassets.com/static/mp3/ali-lohrasbi-vabastegi/9e132ce000b5787.jpg',
-    publish_date: '2020-10-12T00:00:00.000Z'
-  },
-  {
-    id: 9,
-    name: 'دلنوازان',
-    artist: 'علی لهراسبی',
-    lyrics:
-      'حال من دست خودم نیست دیگه آروم نمی گیرم\r\nدلم از کسی گرفته که می خوام براش بمیرم\r\nباز سرنوشت و انتهای آشنایی\r\nباز لحظه های غم انگیر جدایی\r\nباز لحظه های ناگزیر دل بریدن\r\nبازم آخر راه و حس تلخ نرسیدن\r\nپای دنیای تو موندم مثل عاشقای عالم\r\nتا منو ببخشی آخر تا دلت بسوزه کم کم\r\nمثل آینه روبه رومه حس با تو بودن من\r\nدارم از دست تو میرم عاشقی کن منو نشکن',
-    file: 'https://assets.rjassets.com/static/mp3/ali-lohrasbi-delnavazan/1f1dc9bb09385c7.mp3',
-    cover:
-      'https://assets.rjassets.com/static/mp3/ali-lohrasbi-delnavazan/1f1dc9bb09385c7.jpg',
-    publish_date: '2021-08-09T00:00:00.000Z'
-  },
-  {
-    id: 18,
-    name: 'دل به دل',
-    artist: 'علیرضا طلیسچی',
-    lyrics:
-      'سر تو خودم موندم چرا گیرم\r\nمن دارم با احساسم کجا میرم\r\nاینطوری نبودم من اینطوری نبود خندم\r\nمن واسه تو از همه یهو دل کندم\r\n\r\nدل به دل راه داره\r\nدیدی قلبت هنوز جا داره\r\nاین شهر یه زیبا داره\r\nکه گیرشم منه آواره\r\nدل به دل راه داره\r\nهر چی میخوام این چشما داره\r\nآروم نمی گیره یه سر و هزارتا سودا داره\r\n\r\nچقدر میتونی شیرین شی\r\nخوب بمونی بی هیچی\r\nدلبر کی بودی بهترینه دنیا\r\nمهرت به دلت نشسته\r\nحتی با چشم بسته\r\nهیشکی به خودت نمیرسه توو هیچ جا\r\nچه چشمای یه رنگی\r\nخدا داد یه قشنگی\r\nپس چه اصراریه با دلم بجنگی\r\n\r\nدل به دل راه داره\r\nدیدی قلبت هنوز جا داره\r\nاین شهر یه زیبا داره\r\nکه گیرشم منه آواره\r\nدل به دل راه داره\r\nهر چی میخوام این چشما داره\r\nآروم نمی گیره یه سر و هزارتا سودا داره\r\n\r\nدل به دل راه داره\r\nدیدی قلبت هنوز جا داره\r\nاین شهر یه زیبا داره\r\nکه گیرشم منه آواره\r\nدل به دل راه داره\r\nهر چی میخوام این چشما داره\r\nآروم نمی گیره یه سر و هزارتا سودا داره',
-    file: 'https://assets.rjassets.com/static/mp3/alireza-talischi-del-be-del/e2bad059abea997.mp3',
-    cover:
-      'https://assets.rjassets.com/static/mp3/alireza-talischi-del-be-del/e2bad059abea997.jpg',
-    publish_date: '2020-06-14T00:00:00.000Z'
-  },
-  {
-    id: 19,
-    name: 'قاف',
-    artist: 'علیرضا طلیسچی',
-    lyrics:
-      'بارون اومد و یادم داد تو زورت بیشتره\r\nممکن هردفه اونجوری که می خواستی پیش نره\r\nخاطرهام داره خواب و میگیره ازم\r\n\r\nدوری و من دیگه ته دنیام قلبت نوک قله قافه\r\nمن که توو زندگیم هیشکی نیست چه دورغی دارم بگم آخه\r\nاین همه دوری نه واسه تو خوبه نه من\r\n\r\nطرف تو بارون نمیاد نمیشی دلتگه زیاد\r\nمیدونی چند وقته دلم تورو می خواد\r\n\r\nاینجوری نکن با من\r\nهی دوری نکن با من\r\nاین شوخی خوبی نیست\r\nمن بی تو میمیرم واقعا\r\nاینجوری نرو سخته\r\nچرا قلب تو بی رحمه\r\nکی غیر تو با قلبش این حال منو میفهمه\r\n\r\nموندم با اشک و آهم\r\nبا چشمای چشم به راهم\r\nکاشکی میشد یه قیچی میخورد رو خاطرات باهم\r\n\r\nمن دوست دارم این بده\r\nدوریت ازم اینقده که زندم به زور\r\nیه رویای دور\r\n\r\nاینجوری نکن با من\r\nهی دوری نکن با من\r\nاین شوخی خوبی نیست\r\nمن بی تو میمیرم واقعا\r\nاینجوری نرو سخته\r\nچرا قلب تو بی رحمه\r\nکی غیر تو با قلبش این حال منو میفهمه\r\n\r\nاینجوری نکن با من\r\nهی دوری نکن با من\r\nاین شوخی خوبی نیست\r\nمن بی تو میمیرم واقعا\r\nاینجوری نرو سخته\r\nچرا قلب تو بی رحمه\r\nکی غیر تو با قلبش این حال منو میفهمه',
-    file: 'https://assets.rjassets.com/static/mp3/alireza-talischi-ghaf/53c6af54b6fa3bc.mp3',
-    cover:
-      'https://assets.rjassets.com/static/mp3/alireza-talischi-ghaf/53c6af54b6fa3bc.jpg',
-    publish_date: '2021-02-10T00:00:00.000Z'
-  },
-  {
-    id: 25,
-    name: 'ای دل غافل',
-    artist: 'علیرضا طلیسچی',
-    lyrics:
-      'اَی دلِ غافل\r\nچیکار کردی تو با دل\r\n\r\nنشون به اون نشونی خوب نشونی\r\nمیکشونی دلو هرجا بخوای\r\nتو دلربایی کاش یجوری می شد\r\nکه بتونی با دلم راه بیای\r\nاگه من حرف حرف خودمه از ترسه\r\nکه همه دنبالتن این رابطم چشم نخوره\r\nتو این شهر شلوغ آدم بد خیلی پُره\r\n\r\nاَی دلِ غافل چیکار کردی تو با دل\r\nکه دیگه عقلم و کامل دادم از دست\r\nاَی دلِ غافل بکش منت عشقو\r\nبفهمون به دلش تو یه چیزیت هست\r\nیه چیزیت هست\r\n\r\nیکی یدونم تویی\r\nچراغ خونم تویی\r\nغیر از خودتو ولش کن\r\nولش کن\r\nطرف حسابت منم\r\nمست و خرابت منم\r\nهرکی اومد دکش کن، آی دکش کن\r\nخندید خندید\r\nدلم بدجوری تنگید\r\nدیگه دست خودم نیست اگه فهمید، اگه فهمید\r\n\r\nاَی دلِ غافل چیکار کردی تو با دل\r\nکه دیگه عقلم و کامل دادم از دست\r\nاَی دلِ غافل بکش منت عشقو\r\nبفهمون به دلش تو یه چیزیت هست\r\n\r\nاَی دلِ غافل چیکار کردی تو با دل\r\nکه دیگه عقلم و کامل دادم از دست\r\nاَی دلِ غافل بکش منت عشقو\r\nبفهمون به دلش تو یه چیزیت هست\r\nیه چیزیت هست',
-    file: 'http://130.185.120.192:5000/files/songs/Alireza-Talischi-Ay-Dele-Ghafel.mp3',
-    cover:
-      'http://130.185.120.192:5000/files/covers/Alireza-Talischi-Ay-Dele-Ghafel.jpg',
-    publish_date: '2020-05-26T00:00:00.000Z'
-  },
-  {
-    id: 26,
-    name: 'خوشحالم',
-    artist: 'بهنام بانی',
-    lyrics:
-      'دل کارش اینه که بگرده به دور تو هر بار\r\nچشمام غیر از تو کسی رو که نمیبینه انگار\r\nتوو دنیا جز من به کسی نمیاد با تو باشه\r\nبیشتر از اینم دیوونت میشم حالا کجاشه\r\n\r\nخوشحالم از اینکه خدا تورو داده به من\r\nغیر از من و قلبم دیگه قیده همه رو بزن\r\n\r\nمن همونم که برات میمیرم\r\nبا تو جون میگیرم دستاتو که میگیرم\r\nروبه راهه حالم وقتی باهات راه میرم\r\nبه تو دل میدم آره برات میمیرم\r\n\r\nزیرور کردم همه دنیارو تا پیدات شد\r\nتویه قلبم جات شد دنیای من چشمات شد\r\nدله واموندم دیوونه ی کارات شد\r\nبهت دل بستم از وقتی که پیدات شد\r\n\r\nمن عاشقتم تا تهش همینم عشقم\r\nمن آرزوم بود به دلت بشینم عشقم\r\nمن تویه حرفات میشنوم صدای عشقو\r\nمن تویه چشمات میبینم خوده بهشتو\r\n\r\nمن همونم که برات میمیرم\r\nبا تو جون میگیرم دستاتو که میگیرم\r\nروبه راهه حالم وقتی باهات راه میرم\r\nبه تو دل میدم آره برات میمیرم\r\n\r\nزیرور کردم همه دنیارو تا پیدات شد\r\nتویه قلبم جات شد دنیای من چشمات شد\r\nدله واموندم دیوونه ی کارات شد\r\nبهت دل بستم از وقتی که پیدات شد',
-    file: 'http://130.185.120.192:5000/files/songs/Behnam-Bani-Khoshhalam.mp3',
-    cover:
-      'http://130.185.120.192:5000/files/covers/Behnam-Bani-Khoshhalam.jpg',
-    publish_date: '2021-03-27T00:00:00.000Z'
-  },
-  {
-    id: 29,
-    name: 'خوابتو دیدم',
-    artist: 'بهنام بانی',
-    lyrics:
-      'خوابتو دیدم و بازم، دل تنگمو بیتاب\r\nدیگه کارم شده هر شب، هی‌ میپرم از خواب\r\nهرچی‌ گفتم نرو واسه تو فرقی‌ نکرد\r\nرفتی‌ گفتی‌ بهم دنبالم هیچ جا نگرد\r\nمنم حال بد و من نمیدونم که چی‌ اینقدر عوضت کرد\r\n\r\nدل دیوونه بی‌ تو نمیتونه، وای دلِ تنگم\r\nرفت که برگرده اینا همش درده، وای دلِ تنگم\r\nنمه بارون و خاطره هامونو دیگه تو نیستی‌\r\nهرجا وایسادم یاد تو افتادم دیگه تو نیستی‌\r\n\r\nهمه میگن بیخیال شو اگه رفت غصه نداره\r\nتو دلاشون ولی‌ میگن حق داره بیچاره\r\nتو که نیستی‌ ولی‌ بازم دوست داره قلبم\r\nهرچی‌ برگردم از اول رو تو دست میذاره قلبم\r\n\r\nدل دیوونه بی‌ تو نمیتونه، وای دلِ تنگم\r\nرفت که برگرده اینا همش درده، وای دلِ تنگم\r\nنمه بارون و خاطره هامونو دیگه تو نیستی‌\r\nهرجا وایسادم یاد تو افتادم اما تو نیستی‌',
-    file: 'http://130.185.120.192:5000/files/songs/Behnam-Bani-Khabeto-Didam.mp3',
-    cover:
-      'http://130.185.120.192:5000/files/covers/Behnam-Bani-Khabeto-Didam.jpg',
-    publish_date: '2020-10-06T00:00:00.000Z'
+
+function renderSongGener({ gener, songs }) {
+  const generNode = templateSongGener.content.cloneNode(true);
+
+  generNode.querySelector('.song__gener__name').innerText = gener;
+  generNode.querySelector(
+    '.song__gener__show-all'
+  ).href = `./song-gener.html?gener=${gener}`;
+
+  const generContainer = generNode.querySelector('.song__gener__container');
+  songs.forEach(song => generContainer.appendChild(createSong(song)));
+
+  main.appendChild(generNode);
+}
+
+(async () => {
+  let songs = await getSongsList({ size: 42 });
+
+  const songPerGener = Math.floor(songs.length / geners.length);
+  const genersList = [];
+
+  for (let i = 0; i < geners.length; i++) {
+    genersList.push({
+      gener: geners[i],
+      songs: songs.slice(0, songPerGener)
+    });
+
+    songs = songs.slice(songPerGener);
   }
-]);
+
+  genersList.forEach(gener => renderSongGener(gener));
+})();

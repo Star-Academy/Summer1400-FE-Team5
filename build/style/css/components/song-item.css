@@ -9,6 +9,10 @@
   list-style: none;
 }
 .song__item__list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin: 2rem 0;
   padding: 1rem;
   border-radius: 1rem;
@@ -36,9 +40,59 @@
 .song__item__singer {
   font-size: 1.3rem;
 }
-.song__item__duration {
-  margin-right: auto;
-  font-size: 1.3rem;
+.song__item__delete {
+  margin: auto auto auto 0;
+  width: 2rem;
+  height: 2rem;
+}
+.song__item__delete > svg {
+  width: 100%;
+  height: 100%;
+  transition: 0.1s all ease;
+  cursor: pointer;
+}
+.song__item__delete > svg:hover {
+  transform: scale(1.1);
+  fill: red;
+}
+.song__unit {
+  display: block;
+  position: relative;
+  color: #444;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+.song__unit__box {
+  border-radius: 2rem;
+  box-shadow: 0 0 2rem #25252563;
+  overflow: hidden;
+}
+.song__unit__image {
+  display: block;
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+.song__unit__info {
+  position: absolute;
+  width: 100%;
+  padding: 2rem 1rem 1rem 1rem;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background: linear-gradient(0deg, #000, 60%, transparent);
+  transition: all 0.3s ease;
+}
+.song__unit__name {
+  font-size: 2em;
+  font-weight: 400;
+}
+.song__unit__singer {
+  font-size: 1.3em;
+}
+.song__unit:hover .song__unit__info, .song__unit:focus .song__unit__info {
+  padding-bottom: 2.5rem;
 }
 
 /*# sourceMappingURL=song-item.css.map */

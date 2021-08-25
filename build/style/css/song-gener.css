@@ -1,0 +1,26 @@
+main {
+  padding: 2rem;
+  margin: 3rem;
+  border-radius: 3rem;
+  background-color: #fff;
+  box-shadow: 0 0 4rem #00000033;
+  overflow: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  main {
+    margin: 1.5rem;
+  }
+}
+
+.song__gener__box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 2rem;
+}
+.song__gener__name {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=song-gener.css.map */

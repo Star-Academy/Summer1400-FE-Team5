@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="../style/css/main.css" />
     <link rel="stylesheet" href="../style/css/play-list.css" />
     <link rel="stylesheet" href="../style/css/components/song-item.css" />
+    <link rel="stylesheet" href="../style/css/components/popup.css" />
     <link rel="stylesheet" href="../style/css/components/button.css" />
     <link rel="stylesheet" href="../style/css/components/nav.css" />
     <link rel="stylesheet" href="../style/css/components/footer.css" />
-    <link rel="icon" href="../assets/image/favicon.png" />
+    <link rel="stylesheet" href="../style/css/form.css" />
+    <link rel="stylesheet" href="../style/css/components/button.css" />
+    <link rel="icon" href="../assets/image/favicon.ico" />
+    <script>
+      const PROTECTED = true;
+    </script>
+    <script src="../script/api/index.js"></script>
+    <script src="../script/api/auth.js"></script>
+    <script src="../script/nav.js" defer></script>
+    <script src="../script/popup.js" defer></script>
     <script src="../script/play-list.js" defer></script>
+    <script src="../script/form.js" defer></script>
     <title>علاقه مندی هام |‌ آهنگیفای</title>
   </head>
 
@@ -19,13 +30,12 @@
     <nav class="nav">
       <ul class="nav__link__box">
         <li>
-          <a class="nav__link button--inline" href="./sign-up.html">
-            ثبت نام
+          <a class="nav__link--home nav__link" href="./index.html">
+            <img src="../assets/image/favicon.png" alt="آهنگیفای" />
+            <span class="button--inline">آهنگیفای</span>
           </a>
         </li>
-        <li>
-          <a class="nav__link button--inline" href="./login.html"> ورود </a>
-        </li>
+
         <li>
           <a class="nav__link button--inline" href="./song-list.html">
             آهنگ ها
@@ -35,6 +45,20 @@
           <a class="nav__link button--inline" href="./play-list.html">
             علاقه مندی ها
           </a>
+        </li>
+
+        <li class="nav__auth__box">
+          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
+          <a class="nav__link button--inline" href="./login.html">ورود</a>
+        </li>
+
+        <li class="nav__user__box">
+          <a class="nav__user" href="./user.html">
+            <div class="nav__user__image"></div>
+            <div class="nav__user__name"></div>
+          </a>
+
+          <button class="nav__logout">خروج</button>
         </li>
       </ul>
 
@@ -46,9 +70,7 @@
       <div class="nav__menu__background"></div>
       <ul class="nav__menu">
         <li>
-          <a class="nav__link button--inline" href="./sign-up.html">
-            ثبت نام
-          </a>
+          <a class="nav__link button--inline" href="./sign-up.html">ثبت نام</a>
         </li>
         <li>
           <a class="nav__link button--inline" href="./login.html">ورود</a>
@@ -66,27 +88,53 @@
       </ul>
     </nav>
 
+    <template id="play-list-item">
+      <details>
+        <summary>
+          <div></div>
+          <div class="delete-song-container">
+            <svg class="delete-song">
+              <use xlink:href="../assets/image/sprite.svg#delete" />
+            </svg>
+          </div>
+        </summary>
+        <ul class="song__item__list"></ul>
+      </details>
+    </template>
+
     <template id="song-item">
-      <li>
+      <li class="li-song-item">
         <a href="./song.html" class="song__item">
-          <img
-            class="song__item__image"
-            src=""
-            alt=""
-          />
+          <img class="song__item__image" src="" alt="" />
           <div>
             <h3 class="song__item__name"></h3>
             <div class="song__item__singer"></div>
           </div>
-          <div class="song__item__duration"></div>
         </a>
+        <div class="song__item__delete">
+          <svg class="delete-song">
+            <use xlink:href="../assets/image/sprite.svg#delete" />
+          </svg>
+        </div>
       </li>
     </template>
 
-    <main class="play-list">
-      <h1 class="play-list__title">آهنگ های مورد علاقه</h1>
+    <main>
+      <section class="user__info">
+        <div class="user__image"></div>
+        <h1 class="user__name"></h1>
+        <button
+          id="add-to-play-list"
+          class="button--icon"
+          data-label="ایجاد پلی لیست"
+        >
+          <svg>
+            <use xlink:href="../assets/image/sprite.svg#add" />
+          </svg>
+        </button>
+      </section>
 
-      <ul class="song__item__list"></ul>
+      <section class="song__item__list"></section>
     </main>
 
     <footer class="footer">
@@ -134,16 +182,28 @@
         </a>
       </div>
 
-      <div class="footer__link">
-        <a class="button--inline" href="./sign-up.html">ثبت نام</a>
-        <a class="button--inline" href="./login.html">ورود</a>
-        <a class="button--inline" href="./song-list.html">آهنگ ها</a>
-        <a class="button--inline" href="./play-list.html">علاقه مندی ها</a>
-      </div>
-
       <a href="./">
         <img src="../assets/image/favicon.png" alt="" loading="lazy" />
       </a>
     </footer>
+
+    <div class="popup">
+      <div class="popup__content">
+        <h2 class="popup__title">ایجاد لیست جدید</h2>
+
+        <div id="name-playlist-field" class="form__field">
+          <input id="name-list" type="text" class="form__field__input" />
+          <label
+            for="name-list"
+            class="form__field__label form__field__label--inline"
+          >
+            نام لیست
+          </label>
+          <span class="form__field__status"></span>
+        </div>
+
+        <button id="create-playlist" class="button">ایجاد</button>
+      </div>
+    </div>
   </body>
 </html>

@@ -19,5 +19,24 @@ body {
   color: #444;
   background-color: #eee;
 }
+body::-webkit-scrollbar {
+  width: 1.75rem;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0);
+}
+body::-webkit-scrollbar-thumb {
+  border: 0.5rem solid rgba(0, 0, 0, 0);
+  border-radius: 100px;
+  background-clip: padding-box;
+}
+body::-webkit-scrollbar-button {
+  display: none;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+}
+body::-webkit-scrollbar-thumb:active, body::-webkit-scrollbar-thumb:hover {
+  background-color: #adadb4;
+}
 
 /*# sourceMappingURL=main.css.map */

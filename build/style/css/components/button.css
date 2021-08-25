@@ -21,7 +21,6 @@
   transform: scale(0.9);
 }
 .button--inline {
-  margin-bottom: 0.5rem;
   color: #2395ff;
   font-size: 1.3rem;
   transition: 0.3s all ease;

@@ -1,0 +1,66 @@
+main {
+  padding: 2rem;
+  margin: 3rem;
+  border-radius: 3rem;
+  background-color: #fff;
+  box-shadow: 0 0 4rem #00000033;
+  overflow: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  main {
+    margin: 1.5rem;
+  }
+}
+
+.song__gener {
+  margin-bottom: 8rem;
+}
+.song__gener:last-child {
+  margin-bottom: 0;
+}
+.song__gener__header {
+  display: flex;
+  align-items: baseline;
+}
+.song__gener__name {
+  margin: 0 1.5rem 0 auto;
+  font-size: 3rem;
+  font-weight: 400;
+}
+.song__gener__container {
+  display: flex;
+  padding: 2rem 0;
+  list-style: none;
+  overflow-x: auto;
+}
+.song__gener__container::-webkit-scrollbar {
+  width: 1.75rem;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.song__gener__container::-webkit-scrollbar-thumb {
+  border: 0.5rem solid rgba(0, 0, 0, 0);
+  border-radius: 100px;
+  background-clip: padding-box;
+}
+.song__gener__container::-webkit-scrollbar-button {
+  display: none;
+}
+.song__gener__container::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+}
+.song__gener__container::-webkit-scrollbar-thumb:active, .song__gener__container::-webkit-scrollbar-thumb:hover {
+  background-color: #adadb4;
+}
+.song__unit__box {
+  margin: 0 1rem;
+  flex: 0 0 20rem;
+}
+.song__unit__box:first-child {
+  margin-right: 2rem;
+}
+.song__unit__box:last-child {
+  margin-left: 2rem;
+}
+
+/*# sourceMappingURL=song-list.css.map */
