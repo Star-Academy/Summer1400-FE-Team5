@@ -1,0 +1,5 @@
+<app-genre
+  *ngFor="let genre of genres$ | async"
+  [name]="genre.genre"
+  [songs]="genre.songs"
+></app-genre>
