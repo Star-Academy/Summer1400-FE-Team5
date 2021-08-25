@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GenresComponent } from './genres/genres.component';
+import { GenresPage } from './genres.component';
 
-const routes: Routes = [{ path: '', component: GenresComponent }];
+const routes: Routes = [{ path: '', component: GenresPage }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class GenresRoutingModule {}
-

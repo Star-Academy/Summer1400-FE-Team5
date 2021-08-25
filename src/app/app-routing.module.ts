@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'genre',
     loadChildren: () =>
-      import('./pages/genres/genres.module').then(m => m.GenresModule)
+      import('./pages/genres/genres.module').then(m => m.GenresPageModule)
   }
 ];
 
