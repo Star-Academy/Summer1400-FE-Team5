@@ -1,0 +1,7 @@
+<a class="song__card" routerLink="song/{{ id }}">
+  <img class="song__card__cover" [src]="cover" [alt]="name" loading="lazy" />
+  <div class="song__card__info">
+    <h3 class="song__card__name">{{ name }}</h3>
+    <span class="song__card__artist">{{ artist }}</span>
+  </div>
+</a>

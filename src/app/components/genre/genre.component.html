@@ -6,12 +6,12 @@
 
   <ul class="song__genre__container">
     <li class="song__genre__item" *ngFor="let song of songs">
-      <app-song-box
+      <app-song-card
         [id]="song.id"
         [name]="song.name"
         [artist]="song.artist"
         [cover]="song.cover"
-      ></app-song-box>
+      ></app-song-card>
     </li>
   </ul>
 </section>

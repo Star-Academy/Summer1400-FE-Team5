@@ -1,12 +1,12 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-song-box',
-  templateUrl: './song-box.component.html',
-  styleUrls: ['./song-box.component.scss'],
+  selector: 'app-song-card',
+  templateUrl: './song-card.component.html',
+  styleUrls: ['./song-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SongBoxComponent {
+export class SongCardComponent {
   @Input()
   id!: number;
 
