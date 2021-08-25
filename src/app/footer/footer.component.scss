@@ -1,0 +1,38 @@
+@use 'sass:math';
+@use '../../assets/scss/util/var';
+@use '../../assets/scss/util/media';
+@use '../../assets/scss/util/mixins';
+
+.footer {
+  display: flex;
+  padding: 4rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mixins.round-section($background-color: var.$color-text);
+
+  @include media.query(phone) {
+    flex-direction: column-reverse;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      margin-left: 1rem;
+      text-decoration: none;
+
+      &:hover svg {
+        fill: var.$color-primary;
+      }
+
+      svg {
+        width: 4rem;
+        height: 4rem;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
