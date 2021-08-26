@@ -32,8 +32,6 @@
   }
 
   &--inline {
-    margin-bottom: 0.5rem;
-
     color: var.$color-primary;
     font-size: 1.3rem;
 
@@ -119,7 +117,7 @@
 .nav {
   &__link {
     display: block;
-    margin: 0 2rem;
+    margin-left: 4rem;
 
     color: var.$color-text !important;
     font-size: 1.5rem !important;
@@ -128,21 +126,47 @@
       color: var.$color-primary !important;
     }
 
+    &--home {
+      display: flex;
+      height: 4rem;
+      align-items: center;
+
+      text-decoration: none;
+      outline: none;
+      border: none;
+
+      img {
+        display: block;
+        margin-left: 1rem;
+        height: 100%;
+
+        transform: translateY(-0.75rem);
+      }
+
+      span {
+        color: inherit;
+        font-size: inherit;
+      }
+    }
+
     &__box {
       display: flex;
-      padding: 1.5rem 2rem;
+      align-items: center;
+      padding: 1.5rem 4rem;
 
       list-style: none;
 
-      @include media.query(phone) {
-        display: none;
+      li {
+        @include media.query(phone) {
+          display: none;
+        }
       }
     }
   }
 
   &__menu {
     $toggle-size: 4rem;
-    $toggle-margin: 2rem + math.div(var.$round-section-margin, 2);
+    $toggle-margin: 1 + math.div(var.$round-section-margin, 2);
     $backgrond-size: 3.5rem;
 
     display: none;
@@ -167,6 +191,7 @@
     }
 
     & .nav__link {
+      margin: 0 0 1rem 0;
       min-width: 8rem;
 
       color: #fff !important;
@@ -262,6 +287,75 @@
       @include media.query(phone) {
         display: block;
       }
+    }
+  }
+
+  &__auth,
+  &__user {
+    &__box {
+      display: none;
+      align-items: center;
+      margin-right: auto;
+    }
+  }
+
+  &__auth__box {
+    :last-child {
+      margin: 0;
+    }
+  }
+
+  &__user {
+    display: flex;
+    margin-left: 2rem;
+    align-items: center;
+
+    text-decoration: none;
+    outline: none;
+    border: none;
+
+    &__image {
+      display: flex;
+      margin-left: 1rem;
+      width: 3rem;
+      height: 3rem;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #fff;
+      background-color: var.$color-primary;
+      background-size: cover;
+      background-position: center;
+    }
+
+    &__name {
+      font-size: 1.3rem;
+    }
+  }
+
+  &--logged-in &__user__box {
+    display: flex !important;
+  }
+
+  &--logged-out &__auth__box {
+    display: flex !important;
+  }
+
+  &__logout {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.2rem !important;
+
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:focus {
+      color: var.$color-primary;
     }
   }
 }
