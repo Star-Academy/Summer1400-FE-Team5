@@ -1,0 +1,13 @@
+<layout-round>
+  <h1 class="genre-type__title">آهنگ های {{ type }}</h1>
+
+  <section class="genre-type__container">
+    <app-song-card
+      *ngFor="let song of songs"
+      [id]="song.id"
+      [name]="song.name"
+      [artist]="song.artist"
+      [cover]="song.cover"
+    ></app-song-card>
+  </section>
+</layout-round>
