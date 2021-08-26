@@ -6,9 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConfigInterceptor } from './core/config.interceptor';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [	
+      AppComponent,
+      HomeComponent,
+      NavbarComponent,
+      FooterComponent,
+      PlayerComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
