@@ -11,13 +11,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PlayerComponent } from './player/player.component';
 
+
 @NgModule({
-  declarations: [	
+  declarations: [
       AppComponent,
       HomeComponent,
       NavbarComponent,
       FooterComponent,
-      PlayerComponent
+      PlayerComponent,
    ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<div class="audio">
+  <audio src=""></audio>
+  <div class="audio__container">
+    <div class="audio__volume">
+      <button>
+        <input type="checkbox" id="audio__volume--mute" />
+        <label for="audio__volume--mute">
+          <svg>
+            <use xlink:href="../assets/image/sprite.svg#mute" />
+          </svg>
+          <svg>
+            <use
+              xlink:href="../assets/image/sprite.svg#speaker-filled-audio-tool"
+            />
+          </svg>
+        </label>
+      </button>
+      <div>
+        <input type="range" id="volume-controller" value="25" />
+      </div>
+    </div>
+    <div class="audio__actions">
+      <button class="audio__actions--next">
+        <svg>
+          <use
+            xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol"
+          />
+        </svg>
+      </button>
+      <input type="checkbox" id="play_pause_switch" />
+      <label for="play_pause_switch">
+        <svg>
+          <use xlink:href="../assets/image/sprite.svg#play-button-arrowhead" />
+        </svg>
+        <svg>
+          <use
+            xlink:href="../assets/image/sprite.svg#music-pause-button-pair-of-lines"
+          />
+        </svg>
+      </label>
+      <button class="audio__actions--pervious">
+        <svg>
+          <use
+            xlink:href="../assets/image/sprite.svg#fast-forward-arrowhead-symbol-1"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="audio__info">
+      <img src="" alt="عکس آهنگ" />
+    </div>
+  </div>
+  <div class="audio__timeline">
+    <input type="range" id="timeline-controller" value="0" />
+  </div>
+</div>
