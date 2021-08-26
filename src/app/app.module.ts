@@ -10,15 +10,17 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PlayerComponent } from './player/player.component';
+import { SongPageComponent } from './song-page/song-page.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
       AppComponent,
       HomeComponent,
       NavbarComponent,
       FooterComponent,
       PlayerComponent,
+      SongPageComponent
    ],
   imports: [
     BrowserModule,

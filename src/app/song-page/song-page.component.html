@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<main class="song__container">
+  <section class="song__info">
+    <img class="song__image" src="" alt="عکس آهنگ" />
+
+    <h1 class="song__name"></h1>
+
+    <h3 class="song__singer"></h3>
+    <button class="button song__follow">دنبال کردن</button>
+
+    <div class="song__actions">
+      <button
+        id="add-to-playlist"
+        class="button--icon"
+        data-label="افزودن به علاقه مندی ها"
+      >
+        <svg>
+          <use xlink:href="../assets/image/sprite.svg#heart" />
+        </svg>
+      </button>
+
+      <button class="button--icon" data-label="پخش">
+        <svg>
+          <use xlink:href="../assets/image/sprite.svg#play-button-arrowhead" />
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <input type="radio" name="tab" id="lyrics" class="song__tab" checked />
+  <input type="radio" name="tab" id="suggestion" class="song__tab" />
+
+  <div class="song__tab__box">
+    <label for="lyrics" id="song__lyrics__label" class="song__tab__label">
+      متن آهنگ
+    </label>
+
+    <label
+      for="suggestion"
+      id="song__suggestion__label"
+      class="song__tab__label"
+    >
+      آهنگ های پیشنهادی
+    </label>
+  </div>
+
+  <ul class="song__lyrics"></ul>
+
+  <template id="suggestion">
+    <li>
+      <a href="./song.html?id=1" class="song__item">
+        <img class="song__item__image" src="" alt="آهنگ پیشنهادی" />
+        <div>
+          <h3 class="song__item__name"></h3>
+          <div class="song__item__singer"></div>
+        </div>
+        <div class="song__item__duration"></div>
+      </a>
+    </li>
+  </template>
+
+  <section class="song__suggestion">
+    <ul class="song__item__list"></ul>
+  </section>
+  <app-player></app-player>
+</main>
+<app-footer></app-footer>
