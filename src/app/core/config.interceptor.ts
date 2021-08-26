@@ -13,8 +13,6 @@ export class ConfigInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log(req.url);
-
     return next.handle(
       req.clone({ url: `https://songs.code-star.ir${req.url}` })
     );
