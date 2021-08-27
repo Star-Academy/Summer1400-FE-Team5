@@ -1,4 +1,7 @@
-<nav class="nav">
+<nav
+  [ngClass]="{ 'nav--logged-in': loginFlag, 'nav--logged-out': !loginFlag }"
+  class="nav"
+>
   <ul class="nav__link__box">
     <li>
       <a class="nav__link--home nav__link" href="./index.html">
@@ -24,10 +27,12 @@
     <li class="nav__user__box">
       <a class="nav__user" href="./user.html">
         <div class="nav__user__image"></div>
-        <div class="nav__user__name"></div>
+        <div class="nav__user__name">
+          {{ user.first_name }} {{ user.last_name }}
+        </div>
       </a>
 
-      <button class="nav__logout">خروج</button>
+      <button (click)="logOut()" class="nav__logout">خروج</button>
     </li>
   </ul>
 
